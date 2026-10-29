@@ -1,5 +1,5 @@
 /* =========================================================
-   Boucherie des Frères Paul — code commun à toutes les pages
+   Boucherie des Frères Paul : code commun à toutes les pages
    (en-tête, horaires du pied de page, apparition au scroll).
    Chargé après data.js et avant le script propre à la page
    (pages.js ou animal.js).

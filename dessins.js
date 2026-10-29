@@ -1,5 +1,5 @@
 /* =========================================================
-   Planches de découpe — une vraie photo par animal (images/planches/).
+   Planches de découpe : une vraie photo par animal (images/planches/).
    - photo      : la photo (tête à gauche)
    - viewBox    : repère des coordonnées ci-dessous (largeur 800 = largeur de la photo)
    - silhouette : contour de l'animal sur la photo ; découpe aussi les zones

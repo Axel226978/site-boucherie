@@ -17,9 +17,12 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap && wi
   /* ---------- Hero : titre lettre par lettre, puis le reste en fondu ---------- */
   const titre = $(".hero h1");
   titre.setAttribute("aria-label", titre.textContent);
-  // Lettres groupées par mot pour que le titre ne se coupe jamais au milieu d'un mot
-  titre.innerHTML = titre.textContent.split(" ").map((mot) =>
-    `<span class="mot" aria-hidden="true">${[...mot].map((l) => `<span class="lettre">${esc(l)}</span>`).join("")}</span>`).join(" ");
+  // Lettres groupées par mot pour que le titre ne se coupe jamais au milieu d'un mot ; le mot en <em> reste en italique
+  titre.innerHTML = [...titre.childNodes].map((n) => {
+    const mots = n.textContent.split(/(\s+)/).map((mot) => /^\s*$/.test(mot) ? mot :
+      `<span class="mot" aria-hidden="true">${[...mot].map((l) => `<span class="lettre">${esc(l)}</span>`).join("")}</span>`).join("");
+    return n.nodeName === "EM" ? `<em>${mots}</em>` : mots;
+  }).join("");
   gsap.timeline({ defaults: { ease: "power3.out" } })
     .from(".hero h1 .lettre", { opacity: 0, yPercent: 60, rotate: 6, duration: .8, stagger: .035 })
     .from(".hero__sub, .hero__actions", { opacity: 0, y: 20, duration: .8, stagger: .15 }, "-=.4");

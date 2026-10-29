@@ -1,6 +1,6 @@
 /* =========================================================
    Pages de contenu (accueil, viandes, la maison, spécialités,
-   commandes, contact) — contenu lu depuis data.js.
+   commandes, contact), contenu lu depuis data.js.
    Chaque bloc ne s'exécute que si sa section est dans la page.
    ========================================================= */
 
@@ -15,12 +15,12 @@ if (accordeon) {
       ${SITE.animaux.map((a, i) => `<img class="accordeon__fond${i === 0 ? " is-active" : ""}" src="${esc(a.photo)}" alt="">`).join("")}
     </span>
     ${SITE.animaux.map((a, i) => `
-    <a class="volet${i === 0 ? " is-open" : ""}" href="${esc(a.id)}.html" data-index="${i}" aria-label="${esc(a.nom)} : découvrir les morceaux">
+    <a class="volet${i === 0 ? " is-open" : ""}" href="${esc(a.id)}.html" data-index="${i}" aria-label="${esc(a.nom)} : voir les morceaux">
       <span class="volet__vertical" aria-hidden="true">${esc(a.nom)}</span>
       <span class="volet__contenu" aria-hidden="true">
         <span class="volet__nom">${esc(a.nom)}</span>
         <span class="volet__accroche">${esc(a.accroche)}</span>
-        <span class="btn btn--gold">Découvrir les morceaux</span>
+        <span class="btn btn--gold">Voir les morceaux</span>
       </span>
     </a>`).join("")}`;
 
@@ -56,7 +56,7 @@ if ($("#plat")) {
   $("#plat").innerHTML = `
     <img src="${esc(plat.image)}" alt="${esc(plat.nom)}" width="800" height="600" loading="lazy">
     <div class="plat__body">
-      <p class="eyebrow">Plat du jour</p>
+      <p class="plat__titre">Plat du jour</p>
       <h2>${esc(plat.nom)}</h2>
       <p>${esc(plat.description)}</p>
       <div class="plat__meta">
@@ -123,10 +123,10 @@ const phare = SITE.produitPhare;
 if (phare.afficher && $("#phare")) {
   $("#phare").hidden = false;
   $("#phare-contenu").innerHTML = `
-    <img src="${esc(phare.image)}" alt="${esc(phare.titre)}" width="1200" height="900" loading="lazy">
+    <img src="${esc(phare.image)}" alt="${esc(phare.titre.replace(/\*/g, ""))}" width="1200" height="900" loading="lazy">
     <div>
       <p class="eyebrow">${esc(phare.surtitre)}</p>
-      <h2>${esc(phare.titre)}</h2>
+      <h2>${esc(phare.titre).replace(/\*(.+?)\*/g, "<em>$1</em>")}</h2>
       <p>${esc(phare.texte)}</p>
       <a class="btn btn--gold" href="tel:+3283231156">Commander : 083 23 11 56</a>
     </div>`;

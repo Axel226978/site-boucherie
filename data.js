@@ -1,5 +1,5 @@
 /* =========================================================
-   Contenu du site — Boucherie des Frères Paul
+   Contenu du site : Boucherie des Frères Paul
    Toutes les données modifiables sont ici. Plus tard, cet objet
    pourra être remplacé par une réponse d'API (même structure).
    ========================================================= */
@@ -22,7 +22,7 @@ const SITE = {
     lien: "https://www.google.com/maps/search/?api=1&query=Boucherie+des+Fr%C3%A8res+Paul+Rue+du+Commerce+11+5590+Ciney"
   },
 
-  /* Horaires — format "HH:MM". Tableau vide = fermé toute la journée.
+  /* Horaires : format "HH:MM". Tableau vide = fermé toute la journée.
      Fermé aussi les jours fériés (mention affichée sous le tableau). */
   horaires: [
     { jour: "Lundi",    plages: [["09:00", "13:00"], ["14:00", "18:00"]] },
@@ -49,12 +49,13 @@ const SITE = {
     { prenom: "Benjamin",  telephone: "0472 54 20 11", telephoneLien: "+32472542011", image: "images/equipe-benjamin.jpg" }
   ],
 
-  /* Produit phare de saison : mettre afficher à false hors saison */
+  /* Produit phare de saison : mettre afficher à false hors saison.
+     Dans le titre, le mot entre *étoiles* s'affiche en italique. */
   produitPhare: {
     afficher: true,
-    surtitre: "Produit phare de saison",
-    titre: "Le boudin de Noël artisanal",
-    texte: "Chaque fin d'année, notre boudin de Noël revient au comptoir, fabriqué dans notre atelier selon nos recettes. Il se décline en 9 sortes : venez les découvrir en boutique et pensez à commander pour les fêtes.",
+    surtitre: "De saison",
+    titre: "Le boudin de *Noël*",
+    texte: "Il revient chaque fin d'année. On le fait à l'atelier, avec nos recettes, en 9 sortes. Passez les voir au magasin et commandez tôt pour les fêtes.",
     image: "images/boudin-noel.jpg"
   },
 
@@ -70,25 +71,25 @@ const SITE = {
   specialites: [
     {
       titre: "Nos principaux",
-      texte: "Les incontournables du comptoir, cuisinés dans notre atelier.",
+      texte: "Ce qu'on nous demande le plus. Cuisiné à l'atelier.",
       image: "images/specialite-1.jpg",
       produits: ["Boulettes en sauce (ou toscane)", "Lasagne poulet", "Moussaka", "Hachis parmentier (plusieurs variétés)", "Pommes de terre Macaire", "Lasagne maison", "Vol-au-vent", "Bolo", "Pain de saucisse"]
     },
     {
       titre: "Charcuterie maison",
-      texte: "Nos recettes, faites ici, à l'ancienne.",
+      texte: "Faite ici, avec nos recettes.",
       image: "images/specialite-2.jpg",
       produits: ["Boudin blanc et noir", "Boudin de Noël (9 sortes)", "Pâté de Ciney", "Pâté aux pommes", "Lard fumé maison", "Lard salé maison", "Tête pressée", "Tête de veau", "Cervelas à l'ancienne", "Saucisse sèche classique et piquante", "Boulette maison", "Mini boudins curry et paprika (en saison)", "Flocon de boudin blanc"]
     },
     {
       titre: "Plats préparés traiteur",
-      texte: "Des plats mijotés comme à la maison, prêts à réchauffer.",
+      texte: "Mijotés comme à la maison. Vous n'avez qu'à réchauffer.",
       image: "images/specialite-3.jpg",
       produits: ["Potées", "Pizza maison", "Quiche", "Choucroute maison", "Pâtes (cannelloni, tortellini, ravioli)", "Navarin d'agneau", "Chicons gratinés", "Tartiflette", "Kourte", "Prince Orloff", "Carbonnades du chef", "Blanquette", "Langue sauce madère", "Crêpe jambon fromage", "Waterzooï", "Cuisse de lapin préparée"]
     },
     {
       titre: "Fromages",
-      texte: "Une sélection de fromages pour compléter votre table, à découvrir au comptoir.",
+      texte: "Quelques fromages pour finir le repas. Demandez au comptoir.",
       image: "images/specialite-4.jpg",
       produits: []
     }
@@ -96,11 +97,11 @@ const SITE = {
 
   /* « N'oubliez pas de commander » */
   commandes: [
-    { image: "images/commandes/barbecue.jpg", titre: "Menus barbecue et raclette", texte: "Tout prévu pour vos soirées, selon le nombre de convives." },
-    { image: "images/commandes/colis.jpg", titre: "Colis", texte: "Boucherie, barbecue, charcuterie ou pita : des assortiments prêts à emporter." },
+    { image: "images/commandes/barbecue.jpg", titre: "Menus barbecue et raclette", texte: "Dites-nous combien vous êtes, on prévoit le reste." },
+    { image: "images/commandes/colis.jpg", titre: "Colis", texte: "Boucherie, barbecue, charcuterie ou pita. Prêts à emporter." },
     { image: "images/commandes/buffet-froid.jpg", titre: "Buffets froids", texte: "Pour vos réceptions, communions et repas de famille." },
-    { image: "images/commandes/pains-garnis.jpg", titre: "Pains garnis", texte: "Idéals pour un apéritif, une réunion ou un anniversaire." },
-    { image: "images/commandes/fin-annee.jpg", titre: "Buffets de fin d'année", texte: "Réservez tôt pour vos fêtes de Noël et de Nouvel An." }
+    { image: "images/commandes/pains-garnis.jpg", titre: "Pains garnis", texte: "Pour un apéro, une réunion ou un anniversaire." },
+    { image: "images/commandes/fin-annee.jpg", titre: "Buffets de fin d'année", texte: "Pour Noël et le Nouvel An, réservez tôt." }
   ],
 
   galerie: [
@@ -125,7 +126,7 @@ const SITE = {
       // Encart mis en avant (facultatif)
       encart: {
         titre: "Porc Bien Acquis",
-        texte: "Et porc fermier sans OGM ni antibiotiques. Une viande tendre et juteuse, issue d'un élevage sain et respectueux du bien-être animal.",
+        texte: "Avec le porc fermier, élevé sans OGM ni antibiotiques. Une viande tendre et juteuse, d'un élevage contrôlé qui respecte le bien-être des bêtes.",
         points: ["Élevage entièrement contrôlé", "Traçabilité garantie", "Respect du bien-être animal"]
       },
       morceaux: [
@@ -168,7 +169,7 @@ const SITE = {
     {
       id: "boeuf",
       nom: "Bœuf",
-      accroche: "Des pièces persillées, choisies et découpées avec soin.",
+      accroche: "Côte à l'os, filet, bavette, onglet. Demandez, on vous conseille.",
       photo: "images/animaux/boeuf.jpg",
       photoAlt: "Des vaches qui paissent dans un pré",
       morceaux: [
@@ -225,7 +226,7 @@ const SITE = {
     {
       id: "veau",
       nom: "Veau",
-      accroche: "Une viande tendre et délicate, pour les grands classiques.",
+      accroche: "Blanquette, escalopes, osso buco : les classiques.",
       photo: "images/animaux/veau.jpg",
       photoAlt: "Un jeune veau dans un pré",
       morceaux: [
@@ -267,7 +268,7 @@ const SITE = {
     {
       id: "agneau",
       nom: "Agneau",
-      accroche: "Gigot, carré, souris : le goût des beaux jours.",
+      accroche: "Gigot, carré, côtelettes, souris.",
       photo: "images/animaux/agneau.jpg",
       photoAlt: "Des agneaux dans un pré",
       morceaux: [
@@ -300,7 +301,7 @@ const SITE = {
     {
       id: "volaille",
       nom: "Volaille",
-      accroche: "Poulets entiers et découpes, pour tous les jours.",
+      accroche: "Poulet entier ou en morceaux, pour tous les jours.",
       photo: "images/animaux/volaille.jpg",
       photoAlt: "Des poules dans l'herbe",
       morceaux: [

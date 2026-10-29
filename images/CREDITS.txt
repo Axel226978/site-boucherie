@@ -1,4 +1,4 @@
-﻿CRÉDITS PHOTOS — images de démonstration
+﻿CRÉDITS PHOTOS : images de démonstration
 =========================================
 
 Toutes ces photos viennent d'Unsplash (licence Unsplash : utilisation gratuite,
@@ -17,7 +17,7 @@ animaux/agneau.jpg         Frédéric Dupont           https://unsplash.com/phot
 animaux/volaille.jpg       Thomas Iversen            https://unsplash.com/photos/4W8FgDVyUME
 
 
-Photos des planches de découpe (pages animaux) — Wikimedia Commons. Les contours et
+Photos des planches de découpe (pages animaux) : Wikimedia Commons. Les contours et
 zones cliquables sont tracés sur ces photos dans dessins.js : à retracer si on les change.
 
 planches/porc.jpg                Keystone International                    CC BY 2.0       https://commons.wikimedia.org/wiki/File:Champion_Landrace_Barrow,_Open_Show_(cropped).jpg
@@ -26,7 +26,7 @@ planches/veau.jpg                4028mdk09                                 CC BY
 planches/agneau.jpg              olive.titus                               CC BY 2.0       https://commons.wikimedia.org/wiki/File:Agneau_au_pr%C3%A9,_Gries,_Bas-Rhin_-_54482635354.jpg
 planches/volaille.jpg            3268zauber                                CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Dorking_Henne.JPG
 
-Photos des morceaux — Wikimedia Commons (licences Creative Commons ou domaine public :
+Photos des morceaux : Wikimedia Commons (licences Creative Commons ou domaine public :
 l'auteur doit être cité, c'est fait sur mentions-legales.html). Une photo par morceau.
 
 viandes/porc-tete.jpg              Herr Rau                                  CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Pig%27s_head,_sideways.jpg

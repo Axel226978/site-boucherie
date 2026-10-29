@@ -1,7 +1,7 @@
 /* =========================================================
    Gabarit des pages animaux (porc.html, boeuf.html, …)
    L'animal est choisi par <body data-animal="porc">.
-   Contenu : data.js — Dessin : dessins.js
+   Contenu : data.js, dessin : dessins.js
    ========================================================= */
 
 const animal = SITE.animaux.find((a) => a.id === document.body.dataset.animal);
@@ -55,7 +55,7 @@ document.querySelectorAll(".zone-lien").forEach((lien) => {
 if (animal.encart) {
   $("#encart").hidden = false;
   $("#encart").innerHTML = `
-    <p class="encart__label">Notre sélection</p>
+    <p class="encart__label">Notre choix</p>
     <h3>${esc(animal.encart.titre)}</h3>
     <p>${esc(animal.encart.texte)}</p>
     <ul>${animal.encart.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>`;
@@ -71,7 +71,7 @@ $("#fiches").innerHTML = animal.morceaux.map((m) => `
       <p>${esc(m.description)}</p>
       <h4>Cuissons conseillées</h4>${puces(m.cuisson)}
       <h4>Idée recette</h4><p>${esc(m.recette)}</p>
-      ${m.produits ? `<h4>Nos produits maison</h4>${puces(m.produits)}` : ""}
+      ${m.produits ? `<h4>Fait maison</h4>${puces(m.produits)}` : ""}
       <p class="fiche__prix">Prix : sur demande en magasin</p>
     </div>
   </article>`).join("");
