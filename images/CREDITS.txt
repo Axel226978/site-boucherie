@@ -96,10 +96,7 @@ specialite-4.jpg           Andra C Taylor Jr         https://unsplash.com/photos
 boudin-noel.jpg            Diego Arenas de Rodrigo   https://unsplash.com/photos/3QJiX_KMj5c
 galerie-interieur.jpg      tommao wang               https://unsplash.com/photos/kqytZ3VFb_o
 galerie-boucher.jpg        Kyle Mackie               https://unsplash.com/photos/effAM7L50fI
-galerie-saucisses-seches.jpg  Edi Libedinsky         https://unsplash.com/photos/Wp3qbHlw1mI
 galerie-produits.jpg       Danielle Suijkerbuijk     https://unsplash.com/photos/NWo2mDYnfjY
-galerie-plats-prepares.jpg Clare Andrews             https://unsplash.com/photos/rBhXooUziZc
-galerie-buffet-froid.jpg   Tim Cooper                https://unsplash.com/photos/1R7iHPt63Lc
 commandes/barbecue.jpg     Victoria Shes             https://unsplash.com/photos/UC0HZdUitWY
 commandes/colis.jpg        Jez Timms                 https://unsplash.com/photos/6JQMjhqpVhE
 commandes/buffet-froid.jpg Saile Ilyas               https://unsplash.com/photos/SiwrpBnxDww

@@ -1,17 +1,81 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr-BE">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mentions légales | Boucherie des Frères Paul</title>
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#5e1621">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="section container">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="images/logo.png" alt="" width="46" height="46">Frères Paul<span>Boucherie · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html">Viandes</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Porc</a></li>
+              <li><a href="boeuf.html">Bœuf</a></li>
+              <li><a href="veau.html">Veau</a></li>
+              <li><a href="agneau.html">Agneau</a></li>
+              <li><a href="volaille.html">Volaille</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">La maison</a></li>
+          <li><a href="specialites.html">Spécialités</a></li>
+          <li><a href="commandes.html">Commandes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Appeler</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- À COMPLÉTER : remplacer chaque [à compléter] par les vraies informations -->
+  <main id="contenu" class="container texte">
+    <p class="eyebrow">Informations légales</p>
     <h1>Mentions <em>légales</em></h1>
-    <p>Page en cours de rédaction.</p>
+
+    <h2>Éditeur du site</h2>
+    <p>
+      Boucherie des Frères Paul<br>
+      Forme juridique : [à compléter]<br>
+      Rue du Commerce 11, 5590 Ciney, Belgique<br>
+      Téléphone : <a href="tel:+3283231156">083 23 11 56</a><br>
+      E-mail : [à compléter]<br>
+      Numéro d'entreprise (BCE) et TVA : BE [à compléter]
+    </p>
+
+    <h2>Hébergement</h2>
+    <p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. <a href="https://vercel.com">vercel.com</a></p>
+
+    <h2>Réalisation</h2>
+    <p>Site conçu et réalisé par Propulse Web.</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>Les textes, le logo et la présentation du site appartiennent à la Boucherie des Frères Paul. Les photos et modèles 3D appartiennent à leurs auteurs (voir les crédits ci-dessous). Toute reproduction sans accord préalable est interdite.</p>
+
+    <h2>Responsabilité</h2>
+    <p>Les informations du site (horaires, produits, plat du jour) sont données à titre indicatif et peuvent changer. Les prix sont communiqués en magasin. En cas de doute, appelez-nous. Les liens vers d'autres sites (Google, OpenStreetMap, Wikimedia) mènent vers des contenus dont nous ne sommes pas responsables.</p>
+
+    <h2>Données personnelles</h2>
+    <p>Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</p>
+
     <h2>Crédits <em>photos</em></h2>
     <p>Photos des animaux (planches de découpe) : Wikimedia Commons.</p>
     <ul>
@@ -60,12 +124,12 @@
       <li>veau, quasi : Benoît Prieur, <a href="https://commons.wikimedia.org/wiki/File:Quasi_de_veau_au_jus_de_romarin_Le_Cheval_Blanc_(Montluel)_ao%C3%BBt_2022.jpg">CC0</a></li>
       <li>veau, jarret : Mogens Engelund, <a href="https://commons.wikimedia.org/wiki/File:Veal-shank.jpg">CC BY-SA 3.0</a></li>
       <li>veau, escalopes : Fanny Schertzer, <a href="https://commons.wikimedia.org/wiki/File:Saltimbocca_raw_(2).jpg">CC BY 3.0</a></li>
-      <li>agneau, collier : Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you, <a href="https://commons.wikimedia.org/wiki/File:-2022-02-08_Sliced_neck_of_lamb,_Trimingham,_Norfolk.JPG">CC BY-SA 4.0</a></li>
+      <li>agneau, collier : Kolforn, <a href="https://commons.wikimedia.org/wiki/File:-2022-02-08_Sliced_neck_of_lamb,_Trimingham,_Norfolk.JPG">CC BY-SA 4.0</a></li>
       <li>agneau, epaule : Inapond, <a href="https://commons.wikimedia.org/wiki/File:Lammbog.jpg">CC BY-SA 4.0</a></li>
       <li>agneau, carre : User:Stephane8888 (Stephane8888 Wiktionnaire), <a href="https://commons.wikimedia.org/wiki/File:Rack_Carr%C3%A9_d%27agneau.JPG">CC BY-SA 2.5</a></li>
       <li>agneau, cotelettes : Photo by User:Salimfadhley, <a href="https://commons.wikimedia.org/wiki/File:Raw_lamb_cutlets_with_shredded_ginger_and_rosemary.jpg">CC BY-SA 3.0</a></li>
-      <li>agneau, selle : Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you, <a href="https://commons.wikimedia.org/wiki/File:-2020-20-21_Uncooked_double_lamb_chops,_Trimingham,_Norfolk.JPG">CC BY-SA 4.0</a></li>
-      <li>agneau, filet : Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you, <a href="https://commons.wikimedia.org/wiki/File:-2022-01-06_Lamb_loin_chops,_Trimingham,_Norfolk.JPG">CC BY-SA 4.0</a></li>
+      <li>agneau, selle : Kolforn, <a href="https://commons.wikimedia.org/wiki/File:-2020-20-21_Uncooked_double_lamb_chops,_Trimingham,_Norfolk.JPG">CC BY-SA 4.0</a></li>
+      <li>agneau, filet : Kolforn, <a href="https://commons.wikimedia.org/wiki/File:-2022-01-06_Lamb_loin_chops,_Trimingham,_Norfolk.JPG">CC BY-SA 4.0</a></li>
       <li>agneau, gigot : DocteurCosmos, <a href="https://commons.wikimedia.org/wiki/File:Gigot_raccourci_cru_1.JPG">CC BY-SA 3.0</a></li>
       <li>agneau, souris : Benoît Prieur, <a href="https://commons.wikimedia.org/wiki/File:Brasserie_Chanteclair_(Lyon)_-_souris_d%27agneau_(avril_2022).jpg">CC0</a></li>
       <li>volaille, entier : Nesnad, <a href="https://commons.wikimedia.org/wiki/File:Whole_raw_chicken_-_Japan_Dec_22_2019.jpeg">CC BY 4.0</a></li>
@@ -75,7 +139,39 @@
       <li>volaille, aile : ProjectManhattan, crop and changes: User:Kersti Nebelsiek, <a href="https://commons.wikimedia.org/wiki/File:Plucked_chicken_wing.jpg">CC BY-SA 3.0</a></li>
       <li>volaille, supreme : Harald the Bard, <a href="https://commons.wikimedia.org/wiki/File:Chicken_breasts_and_wing_quarters.jpg">CC0</a></li>
     </ul>
-    <p><a href="index.html">← Retour à l'accueil</a></p>
+    <p>Autres photos : <a href="https://unsplash.com/license">Unsplash</a>. Vidéo de l'accueil : <a href="https://www.pexels.com/video/chef-slicing-meat-8477208/">Pexels</a>.</p>
+    <p>Modèles 3D du porc, du bœuf, du veau et de l'agneau : Quaternius (<a href="https://poly.pizza">Poly Pizza</a>, domaine public CC0). Modèle 3D de la poule : Poly by Google, licence <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
   </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Boucherie · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Horaires</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Liens</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Viandes</a></li>
+          <li><a href="la-maison.html">La maison</a></li>
+          <li><a href="specialites.html">Spécialités</a></li>
+          <li><a href="commandes.html">Commandes</a></li>
+          <li><a href="contact.html">Contact et accès</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+      <p>Site réalisé par Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

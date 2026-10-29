@@ -5,14 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Politique de confidentialité | Boucherie des Frères Paul</title>
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#5e1621">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="section container">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="images/logo.png" alt="" width="46" height="46">Frères Paul<span>Boucherie · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html">Viandes</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Porc</a></li>
+              <li><a href="boeuf.html">Bœuf</a></li>
+              <li><a href="veau.html">Veau</a></li>
+              <li><a href="agneau.html">Agneau</a></li>
+              <li><a href="volaille.html">Volaille</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">La maison</a></li>
+          <li><a href="specialites.html">Spécialités</a></li>
+          <li><a href="commandes.html">Commandes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Appeler</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu" class="container texte">
+    <p class="eyebrow">Vos données</p>
     <h1>Politique de <em>confidentialité</em></h1>
-    <p>Page en cours de rédaction.</p>
-    <p><a href="index.html">← Retour à l'accueil</a></p>
+    <p>Mise à jour : octobre 2026</p>
+
+    <h2>En bref</h2>
+    <p>Ce site n'a ni formulaire, ni compte client, ni cookie publicitaire, ni outil de statistiques. Nous ne collectons aucune donnée vous concernant par ce site.</p>
+
+    <h2>Responsable</h2>
+    <p>Boucherie des Frères Paul, Rue du Commerce 11, 5590 Ciney, Belgique. Téléphone : <a href="tel:+3283231156">083 23 11 56</a>. E-mail : [à compléter].</p>
+
+    <h2>Ce qui se passe quand vous visitez le site</h2>
+    <ul>
+      <li><strong>Hébergement :</strong> notre hébergeur, Vercel, enregistre automatiquement des journaux techniques (adresse IP, page demandée, date) pour faire fonctionner le site et le protéger. Ils sont gardés peu de temps.</li>
+      <li><strong>Polices et animations :</strong> les polices viennent de Google Fonts, les scripts d'animation et de 3D de cdnjs (Cloudflare) et jsDelivr. Pour vous les envoyer, ces services reçoivent votre adresse IP.</li>
+      <li><strong>Carte :</strong> la page Contact affiche une carte OpenStreetMap, qui reçoit aussi votre adresse IP.</li>
+      <li><strong>Avis Google :</strong> le bouton « Voir les avis sur Google » ouvre Google Maps. La politique de Google s'applique dès que vous cliquez.</li>
+      <li><strong>Mémoire du navigateur :</strong> le site retient dans votre navigateur (stockage local) que vous avez déjà vu l'animation d'accueil, pour ne pas la rejouer. Rien n'est envoyé. Vous pouvez l'effacer en vidant les données du site dans votre navigateur.</li>
+    </ul>
+    <p>Certains de ces prestataires sont situés hors de l'Union européenne (États-Unis). Ils s'engagent à respecter le RGPD, notamment via le cadre de protection des données UE–États-Unis.</p>
+
+    <h2>Quand vous nous appelez</h2>
+    <p>Si vous passez commande par téléphone, nous notons votre nom, votre numéro et votre commande, seulement pour la préparer. Ces informations ne sont jamais vendues ni partagées.</p>
+
+    <h2>Vos droits</h2>
+    <p>Vous pouvez nous demander l'accès à vos données, leur correction ou leur suppression, en nous appelant ou au magasin. Si vous pensez que vos droits ne sont pas respectés, vous pouvez porter plainte auprès de l'<a href="https://www.autoriteprotectiondonnees.be">Autorité de protection des données</a>, rue de la Presse 35, 1000 Bruxelles.</p>
   </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Boucherie · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Horaires</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Liens</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Viandes</a></li>
+          <li><a href="la-maison.html">La maison</a></li>
+          <li><a href="specialites.html">Spécialités</a></li>
+          <li><a href="commandes.html">Commandes</a></li>
+          <li><a href="contact.html">Contact et accès</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+      <p>Site réalisé par Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

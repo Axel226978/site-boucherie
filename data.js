@@ -11,9 +11,8 @@ const SITE = {
     ville: "Ciney",
     telephone: "083 23 11 56",
     telephoneLien: "+3283231156",
-    // Coordonnées approximatives : à vérifier sur openstreetmap.org
-    latitude: 50.2948,
-    longitude: 5.1003
+    latitude: 50.29494,
+    longitude: 5.0998
   },
 
   avis: {

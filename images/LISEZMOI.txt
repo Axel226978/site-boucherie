@@ -16,10 +16,7 @@ specialite-3.jpg    800 x 600                Plats préparés traiteur
 specialite-4.jpg    800 x 600                Fromages
 galerie-interieur.jpg          1000 x 750    Galerie : intérieur de la boutique
 galerie-boucher.jpg            1000 x 750    Galerie : boucher au travail
-galerie-saucisses-seches.jpg   1000 x 750    Galerie : saucisses sèches
 galerie-produits.jpg           1000 x 750    Galerie : produits de boucherie
-galerie-plats-prepares.jpg     1000 x 750    Galerie : plats préparés
-galerie-buffet-froid.jpg       1000 x 750    Galerie : buffet froid
 boudin-noel.jpg     1200 x 900               Boudin de Noël (produit phare de saison)
 equipe-sebastien.jpg 600 x 750 (portrait)    Portrait de Sébastien
 equipe-olivier.jpg  600 x 750 (portrait)     Portrait d'Olivier
