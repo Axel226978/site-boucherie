@@ -1,0 +1,32 @@
+MODÈLES 3D
+==========
+
+porc.glb
+  Modèle : « Pig » par Quaternius
+  Source : https://poly.pizza/m/TNvG3QUFlp (pack d'animaux de ferme Quaternius, quaternius.com)
+  Licence : CC0 1.0, domaine public (aucune attribution obligatoire)
+  Modifié : animations et squelette retirés, matière unique crème rosée mate,
+            géométrie quantifiée avec glTF-Transform (28 Ko).
+
+boeuf.glb
+  Modèle : « Cow » (brune, avec cornes) par Quaternius
+  Source : https://poly.pizza/m/26zM1outCr
+  Licence : CC0 1.0, domaine public
+
+veau.glb
+  Modèle : « Cow » (sans cornes) par Quaternius, utilisé pour le veau faute de modèle de veau
+  Source : https://poly.pizza/m/5XSc2Fka3F
+  Licence : CC0 1.0, domaine public
+
+agneau.glb
+  Modèle : « Sheep » par Quaternius
+  Source : https://poly.pizza/m/C39AUXUUes
+  Licence : CC0 1.0, domaine public
+
+volaille.glb
+  Modèle : « Hen » par Poly by Google
+  Source : https://poly.pizza/m/8Unya0rw9tR
+  Licence : CC BY 3.0 (attribution obligatoire : mention dans le pied de page de volaille.html)
+
+Tous : animations, squelette et textures retirés, matière unique crème rosée mate,
+géométrie quantifiée avec glTF-Transform.

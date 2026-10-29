@@ -73,6 +73,16 @@
           <p>Passez sur un morceau pour voir son nom. Cliquez pour lire sa fiche.</p>
         </div>
         <div class="planche__dessin reveal" id="dessin"></div>
+        <!-- Bœuf en 3D (animal3d.js) : remplace la planche une fois chargé ; si la 3D échoue, la planche reste -->
+        <div class="vue3d" id="vue3d" hidden>
+          <div class="vue3d__scene" id="vue3d-scene">
+            <button class="vue3d__ensemble" id="vue3d-ensemble" type="button" hidden>Vue d'ensemble</button>
+          </div>
+          <aside class="vue3d__fiche" id="vue3d-fiche" aria-live="polite">
+            <p class="eyebrow">Le bœuf en 3D</p>
+            <p class="vue3d__aide">Tournez le bœuf à la souris ou au doigt. Touchez un point doré pour voir le morceau.</p>
+          </aside>
+        </div>
         <div class="encart reveal" id="encart" hidden></div>
       </div>
     </section>
@@ -133,5 +143,6 @@
   <script src="dessins.js"></script>
   <script src="script.js"></script>
   <script src="animal.js"></script>
+  <script src="animal3d.js"></script>
 </body>
 </html>

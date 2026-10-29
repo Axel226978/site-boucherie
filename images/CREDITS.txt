@@ -15,6 +15,10 @@ animaux/boeuf.jpg          Alexandr Podvalny         https://unsplash.com/photos
 animaux/veau.jpg           gabrielle dreiling        https://unsplash.com/photos/0WH3YdAZNqE
 animaux/agneau.jpg         Frédéric Dupont           https://unsplash.com/photos/sZ049Hp3cbI
 animaux/volaille.jpg       Thomas Iversen            https://unsplash.com/photos/4W8FgDVyUME
+accueil-viandes.jpg        Kyle Mackie               https://unsplash.com/photos/QH8SHBARVVk
+accueil-maison.jpg         Kyle Mackie               https://unsplash.com/photos/effAM7L50fI
+accueil-specialites.jpg    Marshalok Brend           https://unsplash.com/photos/ZVUM-RccmbM
+accueil-commandes.jpg      Llio Angharad             https://unsplash.com/photos/jkVToIbJsWA
 
 
 Photos des planches de découpe (pages animaux) : Wikimedia Commons. Les contours et
@@ -82,7 +86,7 @@ viandes/volaille-aile.jpg          ProjectManhattan, crop and changes: User  CC 
 viandes/volaille-supreme.jpg       Harald the Bard                           CC0             https://commons.wikimedia.org/wiki/File:Chicken_breasts_and_wing_quarters.jpg
 
 hero.jpg / og-image.jpg    Kyle Mackie               https://unsplash.com/photos/qgfjZUXup1M
-interieur.jpg              Candes J                  https://unsplash.com/photos/PG02K4OnvQo
+maison-comptoir.jpg        Jolien Coryn              https://unsplash.com/photos/6qCfi97nCQc
 bandeau.jpg                Iñigo De la Maza          https://unsplash.com/photos/LQJg_PXPPUs
 plat-du-jour.jpg           Nathan Dumlao             https://unsplash.com/photos/JXYdIWqA5IM
 specialite-1.jpg           Emanuel Ekström           https://unsplash.com/photos/flEUTTwGlJQ

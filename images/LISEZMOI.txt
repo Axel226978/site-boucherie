@@ -7,7 +7,7 @@ Format JPG, compressé (idéalement < 300 Ko, < 500 Ko pour hero.jpg).
 Fichier             Dimensions conseillées   Contenu
 ------------------  -----------------------  ------------------------------------------------
 hero.jpg            1920 x 1080 (paysage)    Façade ou comptoir de la boucherie (fond du haut de page, assombri)
-interieur.jpg       1200 x 900               Intérieur de la boutique, comptoir, équipe au travail
+maison-comptoir.jpg 1200 x 800               Intérieur de la boutique, comptoir, équipe au travail
 plat-du-jour.jpg    800 x 600                Photo du plat du jour (peut changer avec le plat, voir data.js)
 og-image.jpg        1200 x 630               Image affichée lors d'un partage sur Facebook / WhatsApp
 specialite-1.jpg    800 x 600                Nos principaux (boulettes, lasagne, vol-au-vent…)

@@ -114,6 +114,23 @@ const SITE = {
       accroche: "Porc Bien Acquis et porc fermier, élevés sans OGM ni antibiotiques.",
       photo: "images/animaux/porc.jpg",
       photoAlt: "Un cochon dans l'herbe d'un pré",
+      // Cochon en 3D (animal3d.js) : pour chaque morceau, [position, normale] en coordonnées du modèle.
+      // Calculées depuis la boîte englobante (groin en z+, sabots en y = 0) puis posées sur la surface.
+      modele3d: {
+        src: "images/3d/porc.glb",
+        points: {
+          "tete":         [[0.71, 2.43, 3.86],  [0.99, 0.05, -0.16]],
+          "echine":       [[0.83, 3.82, 2.59],  [0.81, 0.16, 0.57]],
+          "epaule":       [[1.32, 2.63, 2.23],  [0.82, 0.2, 0.54]],
+          "carre":        [[1.01, 3.83, 0.72],  [0.97, 0.2, 0.12]],
+          "poitrine":     [[1.26, 2.15, 0.31],  [0.99, -0.14, 0.06]],
+          "filet":        [[1.11, 3.89, -0.82], [0.99, 0.16, -0.01]],
+          "filet-mignon": [[1.23, 3.19, -1.52], [0.98, 0.17, 0.08]],
+          "jambon":       [[1.58, 2.54, -2.69], [1, -0.03, 0.09]],
+          "jarret":       [[1.33, 1.21, -3.24], [0.97, -0.23, 0.06]],
+          "pied":         [[1.39, 0.04, 2.02],  [0.99, 0.03, 0.13]]
+        }
+      },
       // Encart mis en avant (facultatif)
       encart: {
         titre: "Porc Bien Acquis",
@@ -163,6 +180,27 @@ const SITE = {
       accroche: "Côte à l'os, filet, bavette, onglet. Demandez, on vous conseille.",
       photo: "images/animaux/boeuf.jpg",
       photoAlt: "Des vaches qui paissent dans un pré",
+      modele3d: {
+        src: "images/3d/boeuf.glb",
+        points: {
+          "collier":       [[0.33, 3.09, 3.38], [0.88, -0.43, 0.18]],
+          "paleron":       [[0.67, 3.43, 2.57], [0.95, 0.04, 0.31]],
+          "macreuse":      [[0.18, 2.48, 2.7], [0.33, -0.76, 0.56]],
+          "basses-cotes":  [[0.75, 3.91, 2.06], [0.98, 0.17, 0.09]],
+          "cote":          [[0.81, 3.92, 1.3], [0.99, 0.16, -0.02]],
+          "plat-de-cotes": [[0.95, 2.61, 1.63], [0.98, 0.06, 0.19]],
+          "faux-filet":    [[0.8, 3.92, 0.47], [0.95, 0.32, -0.02]],
+          "filet":         [[0.98, 3.37, 0.06], [0.95, 0.31, -0.02]],
+          "aloyau":        [[0.84, 3.83, -0.45], [0.98, 0.14, 0.14]],
+          "rumsteck":      [[0.88, 3.83, -1.36], [0.92, 0.39, 0.11]],
+          "hampe":         [[0.93, 2.11, 0.25], [0.96, -0.27, 0.07]],
+          "onglet":        [[1.01, 2.77, 0.31], [1, 0.05, 0]],
+          "bavette":       [[0.98, 2.38, -0.27], [0.89, -0.43, -0.16]],
+          "gite":          [[0.9, 2.37, -1.94], [0.97, -0.17, -0.17]],
+          "jarret":        [[0.72, 0.75, 1.98], [0.93, 0.04, 0.36]],
+          "queue":         [[0.1, 3.3, -2.93], [0.7, 0, -0.7]] // posé à la main : la queue est trop fine pour le lancer de rayon
+        }
+      },
       morceaux: [
         { id: "collier", nom: "Collier", image: "images/viandes/boeuf-collier.jpg",
           description: "Morceau du cou, gélatineux et goûteux, qui fait merveille en cuisson lente.",
@@ -220,6 +258,22 @@ const SITE = {
       accroche: "Blanquette, escalopes, osso buco : les classiques.",
       photo: "images/animaux/veau.jpg",
       photoAlt: "Un jeune veau dans un pré",
+      modele3d: {
+        src: "images/3d/veau.glb",
+        points: {
+          "poitrine":  [[0.39, 2.41, 2.93], [0.98, -0.1, 0.18]],
+          "epaule":    [[0.62, 3.53, 2.62], [0.98, 0.15, 0.11]],
+          "tendron":   [[0.86, 2.66, 1.38], [0.99, -0.09, -0.14]],
+          "cotes":     [[0.73, 4.29, 1.28], [0.99, 0.11, 0.02]],
+          "longe":     [[0.83, 4.4, 0.06], [0.99, 0.12, 0.09]],
+          "filet":     [[0.92, 3.78, -0.32], [0.99, 0.14, -0.08]],
+          "quasi":     [[0.82, 4.29, -2.02], [0.93, 0.37, 0.01]],
+          "escalopes": [[1.04, 2.95, -1.62], [0.59, -0.02, 0.81]],
+          "noix":      [[1.08, 3.38, -2.35], [1, -0.01, 0.05]],
+          "sous-noix": [[1.09, 2.44, -2.72], [1, -0.01, 0.05]],
+          "jarret":    [[-0.5, 0.89, -2.73], [0.99, -0.1, 0.07]]
+        }
+      },
       morceaux: [
         { id: "tendron", nom: "Tendron", image: "images/viandes/veau-tendron.jpg",
           description: "Morceau cartilagineux qui devient fondant en cuisson lente.",
@@ -262,6 +316,19 @@ const SITE = {
       accroche: "Gigot, carré, côtelettes, souris.",
       photo: "images/animaux/agneau.jpg",
       photoAlt: "Des agneaux dans un pré",
+      modele3d: {
+        src: "images/3d/agneau.glb",
+        points: {
+          "collier":    [[0.35, 3.01, 2.35], [0.89, -0.05, 0.45]],
+          "epaule":     [[0.68, 2.67, 1.61], [0.86, -0.16, 0.48]],
+          "cotelettes": [[0.76, 2.96, 0.86], [0.97, 0.24, -0.06]],
+          "carre":      [[0.6, 3.68, 0.68], [0.98, 0.21, 0.06]],
+          "selle":      [[0.66, 3.69, -0.26], [0.98, 0.17, 0.08]],
+          "filet":      [[0.76, 3.14, -0.44], [0.98, 0.16, -0.09]],
+          "gigot":      [[1.06, 2.73, -1.57], [1, -0.04, 0.09]],
+          "souris":     [[0.86, 1.25, -1.67], [0.99, 0, 0.13]]
+        }
+      },
       morceaux: [
         { id: "collier", nom: "Collier", image: "images/viandes/agneau-collier.jpg",
           description: "Morceau du cou, parfait pour les ragoûts.",
@@ -295,6 +362,17 @@ const SITE = {
       accroche: "Poulet entier ou en morceaux, pour tous les jours.",
       photo: "images/animaux/volaille.jpg",
       photoAlt: "Des poules dans l'herbe",
+      modele3d: {
+        src: "images/3d/volaille.glb",
+        points: {
+          "blanc":   [[6.12, -7.91, 17.52], [0.37, -0.74, 0.56]],
+          "supreme": [[13.29, 2.66, 6.8], [0.9, 0.43, -0.07]],
+          "aile":    [[14.06, 1.98, -7.6], [0.92, 0.39, -0.03]],
+          "entier":  [[4.05, 9.64, -12.63], [0.37, 0.93, -0.06]],
+          "cuisse":  [[13.99, -13.43, -14.78], [0.9, -0.32, -0.29]],
+          "pilon":   [[12.33, -22.05, 2.25], [0.87, -0.26, 0.43]]
+        }
+      },
       morceaux: [
         { id: "entier", nom: "Poulet entier", image: "images/viandes/volaille-entier.jpg",
           description: "Prêt à rôtir, pour le traditionnel poulet du dimanche.",
