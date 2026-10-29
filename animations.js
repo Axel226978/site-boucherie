@@ -25,7 +25,7 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap && wi
   }).join("");
   gsap.timeline({ defaults: { ease: "power3.out" } })
     .from(".hero h1 .lettre", { opacity: 0, yPercent: 60, rotate: 6, duration: .8, stagger: .035 })
-    .from(".hero__sub, .hero__actions", { opacity: 0, y: 20, duration: .8, stagger: .15 }, "-=.4");
+    .from(".hero__sub, .hero__actions, .hero__infos", { opacity: 0, y: 20, duration: .8, stagger: .15 }, "-=.4");
 
   // Parallaxe : la photo descend plus lentement que le texte
   const hero = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
@@ -46,22 +46,6 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap && wi
       scrollTrigger: { trigger: el, start: "top 90%", once: true },
       onUpdate: () => { el.textContent = format(compteur.n); }
     });
-  });
-
-  const mm = gsap.matchMedia();
-  mm.add("(min-width: 900px)", () => {
-    /* ---------- Galerie : défilement horizontal piloté par le scroll vertical ---------- */
-    const piste = $("#galerie");
-    if (!piste) return;
-    piste.classList.add("is-epingle");
-    gsap.to(piste, {
-      x: () => -(piste.scrollWidth - piste.clientWidth), ease: "none",
-      scrollTrigger: {
-        trigger: ".galerie", start: "top top", end: () => "+=" + (piste.scrollWidth - piste.clientWidth),
-        pin: true, scrub: 1, invalidateOnRefresh: true
-      }
-    });
-    return () => piste.classList.remove("is-epingle");
   });
 
   /* ---------- Accordéon : inclinaison 3D du volet ouvert (souris uniquement) ---------- */

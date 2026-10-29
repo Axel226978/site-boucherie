@@ -106,12 +106,6 @@ if ($("#commandes-liste")) {
     </li>`).join("");
 }
 
-/* ---------- Galerie ---------- */
-if ($("#galerie")) {
-  $("#galerie").innerHTML = SITE.galerie.map((g) => `
-    <figure class="galerie__item reveal"><img src="${esc(g.image)}" alt="${esc(g.alt)}" width="1000" height="750" loading="lazy"></figure>`).join("");
-}
-
 /* ---------- Téléphones des frères (page contact) ---------- */
 if ($("#contact-freres")) {
   $("#contact-freres").innerHTML = SITE.equipe.map((m) =>

@@ -14,7 +14,7 @@
   --serif: "Fraunces", Georgia, serif;
   --sans: "Work Sans", system-ui, sans-serif;
   --craie: "Caveat", "Comic Sans MS", cursive;
-  --radius: 4px;
+  --radius: 2px;
   --ease: cubic-bezier(.2, .7, .2, 1);
   --header-h: 68px;
 }
@@ -41,7 +41,8 @@ body::after {
 }
 img { max-width: 100%; display: block; height: auto; }
 a { color: inherit; }
-h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0 0 .6em; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; letter-spacing: -.015em; margin: 0 0 .6em; }
+::selection { background: var(--bordeaux); color: var(--ivoire); }
 h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
 h1 em, h2 em { font-style: italic; font-weight: 400; }
 p { margin: 0 0 1em; }
@@ -50,14 +51,18 @@ p { margin: 0 0 1em; }
 .container { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
 .section { padding: clamp(4rem, 10vw, 7rem) 0; }
 .section__head { max-width: 620px; margin-bottom: 2.5rem; }
+/* Petit label : filet doré puis majuscules espacées */
 .eyebrow {
-  font-size: .78rem;
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .72rem;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--bordeaux-vif);
   font-weight: 600;
-  margin-bottom: .8rem;
+  margin-bottom: 1rem;
 }
+.eyebrow::before { content: ""; width: 2rem; height: 1px; background: currentColor; opacity: .6; }
+.hero .eyebrow { justify-content: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link {
   position: absolute; left: 1rem; top: -100px; z-index: 200;
@@ -68,12 +73,13 @@ p { margin: 0 0 1em; }
 /* ---------- Boutons ---------- */
 .btn {
   display: inline-block;
-  padding: .95rem 1.7rem;
+  padding: 1.05rem 2rem;
   border-radius: var(--radius);
-  font-weight: 500;
-  font-size: .95rem;
+  font-weight: 600;
+  font-size: .74rem;
+  text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: .02em;
+  letter-spacing: .16em;
   border: 1px solid transparent;
   transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s;
 }
@@ -84,16 +90,20 @@ p { margin: 0 0 1em; }
 .btn--ghost:hover { background: var(--ivoire); color: var(--charbon); }
 .btn--gold { background: var(--dore); color: var(--charbon); }
 .btn--gold:hover { background: var(--dore-clair); }
-.btn--small { padding: .55rem 1.1rem; font-size: .88rem; }
+.btn--small { padding: .7rem 1.2rem; font-size: .68rem; }
 
 /* ---------- En-tête ---------- */
 .header {
   position: fixed; inset: 0 0 auto; z-index: 50;
   height: var(--header-h);
   color: var(--ivoire);
-  transition: background .4s, box-shadow .4s;
+  border-bottom: 1px solid transparent;
+  transition: background .4s, border-color .4s;
 }
-.header.is-scrolled, .header.is-open { background: var(--charbon); box-shadow: 0 2px 20px rgb(0 0 0 / .25); }
+.header.is-scrolled, .header.is-open {
+  background: rgb(28 26 25 / .9); border-bottom-color: rgb(184 148 90 / .35);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
 .header__inner {
   height: 100%;
   width: min(1280px, 100% - 2.5rem); margin-inline: auto;
@@ -183,7 +193,14 @@ p { margin: 0 0 1em; }
 .hero .eyebrow { color: var(--dore-clair); }
 .hero h1 { font-size: clamp(2.8rem, 10vw, 6.5rem); font-weight: 500; margin-bottom: .25em; }
 .hero__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 3vw, 1.6rem); color: var(--creme); }
-.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2.5rem; }
+.hero h1 { letter-spacing: -.025em; }
+.hero__infos { margin: 2.5rem 0 0; font: 600 .7rem var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--dore-clair); }
+@media (max-width: 600px) { .hero__infos span { display: block; height: .4rem; visibility: hidden; } } /* le point devient un retour à la ligne */
+/* Fil qui descend : invite à faire défiler */
+.hero__fil { position: absolute; left: 50%; bottom: 0; width: 1px; height: 64px; overflow: hidden; background: rgb(217 191 140 / .25); }
+.hero__fil::after { content: ""; position: absolute; inset: 0; background: var(--dore-clair); animation: fil 2.4s var(--ease) infinite; }
+@keyframes fil { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
 /* Ken Burns : `scale` (et non transform) pour se cumuler avec la parallaxe posée par GSAP */
 @keyframes kenburns { from { scale: 1.04; } to { scale: 1.18; } }
 .hero h1 .mot { display: inline-block; white-space: nowrap; }
@@ -340,6 +357,15 @@ p { margin: 0 0 1em; }
 .raccourcis .autres { grid-template-columns: repeat(2, 1fr); }
 .raccourcis .autre span { font-size: clamp(1.15rem, 5vw, 1.6rem); }
 @media (min-width: 900px) { .raccourcis .autres { grid-template-columns: repeat(4, 1fr); } }
+/* Vignettes numérotées, flèche au survol */
+.raccourcis .autres { counter-reset: n; }
+.raccourcis .autre { aspect-ratio: 3 / 4; }
+.raccourcis .autre::after {
+  counter-increment: n; content: "0" counter(n);
+  position: absolute; top: 1.1rem; left: 1rem; font: 600 .68rem var(--sans); letter-spacing: .2em; color: var(--dore-clair);
+}
+.raccourcis .autre span::after { content: "→"; display: inline-block; margin-left: .4em; opacity: 0; transform: translateX(-8px); transition: opacity .4s, transform .4s var(--ease); }
+.raccourcis .autre:hover span::after, .raccourcis .autre:focus-visible span::after { opacity: 1; transform: none; }
 
 /* ---------- Plat du jour ---------- */
 /* Ardoise de magasin : cadre en bois, fond d'ardoise un peu effacé, écriture à la craie */
@@ -477,7 +503,6 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 1.5rem; }
     radial-gradient(circle at 70% 60%, rgb(184 148 90 / .12) 0 1px, transparent 1.5px) 0 0 / 31px 31px,
     linear-gradient(160deg, #2a0d12, var(--charbon) 60%);
 }
-.phare .eyebrow::before { content: "✦ "; color: var(--dore); }
 
 /* ---------- Commandes ---------- */
 .commandes__liste { list-style: none; padding: 0; margin: 0 0 2.5rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
@@ -498,22 +523,6 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 1.5rem; }
 .bandeau__texte { margin: 0; font: italic 500 clamp(1.8rem, 6vw, 3.6rem)/1.2 var(--serif); color: var(--ivoire); }
 .bandeau__texte span { color: var(--dore); }
 
-/* ---------- Galerie : carrousel tactile, défilement horizontal épinglé sur ordinateur (animations.js) ---------- */
-.galerie { background: var(--creme); overflow-x: clip; }
-.galerie__grid {
-  display: flex; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory;
-  scrollbar-width: none; overscroll-behavior-x: contain;
-}
-.galerie__grid::-webkit-scrollbar { display: none; }
-.galerie__item { flex: 0 0 82%; scroll-snap-align: center; margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; }
-@media (min-width: 900px) {
-  .galerie__grid { gap: 1rem; }
-  .galerie__item { flex-basis: min(44vw, 620px); }
-  .galerie__grid.is-epingle { overflow: visible; }
-}
-.galerie__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
-.galerie__item:hover img { transform: scale(1.06); }
-
 /* ---------- Contact : téléphones et parking ---------- */
 .contact__freres { list-style: none; padding: 0; margin: 0 0 1.5rem; }
 .contact__freres a { color: var(--bordeaux); font-weight: 500; }
@@ -530,11 +539,13 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 1.5rem; }
 .footer__bas p { margin: 0; }
 
 /* ---------- Chiffres clés ---------- */
-.chiffres { background: var(--bordeaux); color: var(--creme); padding: 3rem 0; }
+.chiffres { background: var(--bordeaux); color: var(--creme); padding: 3.5rem 0; }
 .chiffres__liste { list-style: none; padding: 0; margin-block: 0; display: grid; gap: 2rem 1rem; grid-template-columns: repeat(2, 1fr); text-align: center; }
 @media (min-width: 800px) { .chiffres__liste { grid-template-columns: repeat(4, 1fr); } }
 .chiffres strong { display: block; font: 500 clamp(2.4rem, 7vw, 3.6rem)/1.1 var(--serif); color: var(--ivoire); font-variant-numeric: tabular-nums; }
-.chiffres li { font-size: .95rem; }
+.chiffres li { font: 600 .7rem/1.5 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--dore-clair); }
+.chiffres strong { margin-bottom: .5rem; letter-spacing: -.02em; text-transform: none; }
+@media (min-width: 800px) { .chiffres li + li { border-left: 1px solid rgb(217 191 140 / .3); } }
 
 /* ---------- Bandeau défilant ---------- */
 .defilant { overflow: hidden; background: var(--charbon); color: var(--dore-clair); padding: 1.1rem 0; }

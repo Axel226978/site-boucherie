@@ -104,15 +104,6 @@ const SITE = {
     { image: "images/commandes/fin-annee.jpg", titre: "Buffets de fin d'année", texte: "Pour Noël et le Nouvel An, réservez tôt." }
   ],
 
-  galerie: [
-    { image: "images/galerie-interieur.jpg", alt: "L'intérieur de la boucherie" },
-    { image: "images/galerie-boucher.jpg", alt: "Un boucher au travail dans l'atelier" },
-    { image: "images/galerie-saucisses-seches.jpg", alt: "Saucisses sèches maison" },
-    { image: "images/galerie-produits.jpg", alt: "Produits de boucherie au comptoir" },
-    { image: "images/galerie-plats-prepares.jpg", alt: "Plats préparés maison" },
-    { image: "images/galerie-buffet-froid.jpg", alt: "Un buffet froid préparé par la maison" }
-  ],
-
   /* Animaux : accordéon de l'accueil + pages porc.html, boeuf.html, etc.
      Le dessin de découpe (formes SVG) est dans dessins.js, relié par l'id des morceaux.
      Un morceau sans forme dans dessins.js apparaît seulement dans la grille de fiches. */
