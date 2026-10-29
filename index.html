@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boucherie des Frères Paul — Artisans bouchers à Ciney</title>
+  <meta name="description" content="Boucherie artisanale à Ciney depuis plus de 20 ans : viandes de qualité, charcuterie maison, plats préparés, traiteur, colis et buffets. Rue du Commerce 11, 5590 Ciney. 083 23 11 56. Parking gratuit.">
+  <meta name="theme-color" content="#5e1621">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:title" content="Boucherie des Frères Paul — Artisans bouchers à Ciney">
+  <meta property="og:description" content="Laissez-nous vous conseiller et manger deviendra un vrai plaisir ! Viandes, charcuterie maison et plats traiteur à Ciney.">
+  <meta property="og:image" content="images/og-image.jpg">
+
+  <!-- Données structurées -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ButcherShop",
+    "name": "Boucherie des Frères Paul",
+    "alternateName": "Chez Olivier et Sébastien",
+    "image": "images/hero.jpg",
+    "telephone": "+32 83 23 11 56",
+    "openingHours": ["Mo-Sa 09:00-13:00", "Mo-Sa 14:00-18:00"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue du Commerce 11",
+      "postalCode": "5590",
+      "addressLocality": "Ciney",
+      "addressCountry": "BE"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/hero.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- 1. En-tête -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#accueil" class="logo">Frères Paul<span>Boucherie · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li class="nav__sous">
+            <a href="#viandes">Nos viandes</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Porc</a></li>
+              <li><a href="boeuf.html">Bœuf</a></li>
+              <li><a href="veau.html">Veau</a></li>
+              <li><a href="agneau.html">Agneau</a></li>
+              <li><a href="volaille.html">Volaille</a></li>
+            </ul>
+          </li>
+          <li><a href="#maison">La maison</a></li>
+          <li><a href="#specialites">Spécialités</a></li>
+          <li><a href="#commandes">Commandes</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Appeler</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- 2. Hero -->
+    <section class="hero" id="accueil">
+      <img class="hero__img" src="images/hero.jpg" alt="" width="1920" height="1080">
+      <div class="hero__content">
+        <p class="conges" id="conges" role="status" hidden></p>
+        <h1>Boucherie des Frères Paul</h1>
+        <p class="hero__sub">Vos artisans bouchers à Ciney depuis plus de 20 ans</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#viandes">Découvrir nos viandes</a>
+          <a class="btn btn--ghost" href="#contact">Nous trouver</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Nos viandes : accordéon d'animaux, chaque volet mène à sa page -->
+    <section class="viandes" id="viandes" aria-labelledby="viandes-titre">
+      <div class="container section__head reveal">
+        <p class="eyebrow">Nos viandes</p>
+        <h2 id="viandes-titre">Choisissez votre viande</h2>
+        <p>Porc, bœuf, veau, agneau ou volaille : découvrez chaque morceau, comment le cuisiner et nos idées recettes.</p>
+      </div>
+      <nav class="accordeon" id="accordeon" aria-label="Nos viandes par animal"></nav>
+    </section>
+
+    <!-- 4. La maison -->
+    <section class="section maison" id="maison">
+      <div class="container maison__grid">
+        <div class="reveal">
+          <p class="eyebrow">La maison</p>
+          <h2>Une histoire de famille, transmise de main en main</h2>
+          <p>Tout a commencé à Erpent, dans la boucherie de nos parents. C'est là, entre le comptoir et l'atelier, qu'ils nous ont tout appris : la boucherie, la charcuterie, le traiteur, mais aussi la sculpture sur légumes et l'œnologie.</p>
+          <p>Plus de 20 ans de métier plus tard, nous voilà réunis tous les trois à Ciney, rue du Commerce, dans la maison autrefois connue sous le nom « Chez Olivier et Sébastien ». Notre comptoir se veut créatif et vivant : il évolue au fil des saisons, au rythme de ce que nous aimons préparer pour vous.</p>
+          <p class="valeurs">Qualité <span aria-hidden="true">·</span> Accueil <span aria-hidden="true">·</span> Fraîcheur</p>
+          <blockquote class="accroche">« Laissez-nous vous conseiller et manger deviendra un vrai plaisir ! »</blockquote>
+        </div>
+        <figure class="maison__photo reveal">
+          <img src="images/interieur.jpg" alt="L'intérieur de la boucherie et son comptoir de viandes" width="1200" height="900" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 5. Notre équipe -->
+    <section class="section equipe" id="equipe">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Notre équipe</p>
+          <h2>Trois frères, un même métier</h2>
+        </div>
+        <div class="equipe__grid" id="equipe-liste"></div>
+      </div>
+    </section>
+
+    <!-- 6. Engagements -->
+    <section class="section engagements" aria-labelledby="engagements-titre">
+      <div class="container">
+        <h2 class="sr-only" id="engagements-titre">Nos engagements</h2>
+        <div class="engagements__grid">
+          <article class="engagement reveal">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l5.6 11.4 12.6 1.8-9.1 8.9 2.1 12.5L24 33.7l-11.2 5.9 2.1-12.5-9.1-8.9 12.6-1.8z"/></svg>
+            <h3>Qualité premium</h3>
+            <p>La meilleure qualité, au prix juste.</p>
+          </article>
+          <article class="engagement reveal" style="transition-delay:.1s">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C10 20 22 10 40 8c0 18-10 30-26 30M10 38l14-14"/></svg>
+            <h3>Éco-responsable</h3>
+            <p>Apportez vos propres contenants pour réduire les emballages.</p>
+          </article>
+          <article class="engagement reveal" style="transition-delay:.2s">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40h32M12 40V22l12-12 12 12v18M20 40V28h8v12"/></svg>
+            <h3>Tradition &amp; artisanat</h3>
+            <p>Des recettes conservées et des saveurs authentiques.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bandeau photo : nos valeurs -->
+    <section class="bandeau" aria-label="Nos valeurs">
+      <img class="bandeau__img" src="images/bandeau.jpg" alt="Un boucher découpe la viande derrière le comptoir" width="1920" height="900" loading="lazy">
+      <p class="bandeau__texte reveal">Qualité <span aria-hidden="true">·</span> Accueil <span aria-hidden="true">·</span> Fraîcheur</p>
+    </section>
+
+    <!-- 7. Plat du jour -->
+    <section class="section plat" id="plat-du-jour">
+      <div class="container">
+        <article class="plat__card reveal" id="plat"></article>
+      </div>
+    </section>
+
+    <!-- 8. Spécialités -->
+    <section class="section specialites" id="specialites">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Nos spécialités</p>
+          <h2>Fait maison, chaque jour</h2>
+        </div>
+        <div class="cards" id="cards"></div>
+      </div>
+    </section>
+
+    <!-- 9. Produit phare de saison (masqué si produitPhare.afficher = false) -->
+    <section class="section phare" id="phare" hidden>
+      <div class="container phare__grid reveal" id="phare-contenu"></div>
+    </section>
+
+    <!-- 10. Commandes -->
+    <section class="section commandes" id="commandes">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Sur commande</p>
+          <h2>N'oubliez pas de commander</h2>
+          <p>Pensez à réserver quelques jours à l'avance, nous préparons tout pour vous.</p>
+        </div>
+        <ul class="commandes__liste" id="commandes-liste"></ul>
+        <a class="btn btn--primary reveal" href="tel:+3283231156">Commander par téléphone : 083 23 11 56</a>
+      </div>
+    </section>
+
+    <!-- 11. Galerie -->
+    <section class="section galerie" aria-labelledby="galerie-titre">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">En images</p>
+          <h2 id="galerie-titre">Dans notre boucherie</h2>
+        </div>
+        <div class="galerie__grid" id="galerie"></div>
+      </div>
+    </section>
+
+    <!-- 12. Avis -->
+    <section class="avis" aria-label="Avis Google">
+      <div class="container avis__inner reveal" id="avis"></div>
+    </section>
+
+    <!-- 13. Contact & accès -->
+    <section class="section contact" id="contact">
+      <div class="container contact__grid">
+        <div class="reveal">
+          <p class="eyebrow">Contact & accès</p>
+          <h2>Venez nous voir</h2>
+          <address>
+            Rue du Commerce 11<br>5590 Ciney, Belgique<br>
+            <a class="contact__tel" href="tel:+3283231156">083 23 11 56</a>
+          </address>
+          <ul class="contact__freres" id="contact-freres"></ul>
+          <p class="statut" id="statut"></p>
+          <table class="horaires">
+            <caption class="sr-only">Horaires d'ouverture</caption>
+            <tbody id="horaires"></tbody>
+          </table>
+          <p class="horaires__note">Fermé le dimanche et les jours fériés.</p>
+        </div>
+        <div class="contact__droite reveal">
+          <div class="carte" id="carte"></div>
+          <div class="parking">
+            <p class="parking__titre"><span class="parking__p" aria-hidden="true">P</span> Parking gratuit</p>
+            <p>22 places à l'arrière du bâtiment, entrée via la rue Courtejoie. Un code vous est donné pour sortir.</p>
+            <p>Location de places de parking extérieur possible sur demande.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 14. Pied de page -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo">Frères Paul<span>Boucherie · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Horaires</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Liens</p>
+        <ul class="footer__liste">
+          <li><a href="#viandes">Nos viandes</a></li>
+          <li><a href="#specialites">Spécialités</a></li>
+          <li><a href="#commandes">Commandes</a></li>
+          <li><a href="#contact">Contact & accès</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+      <p>Site réalisé par Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script src="accueil.js"></script>
+</body>
+</html>

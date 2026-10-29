@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volaille : nos morceaux — Boucherie des Frères Paul, Ciney</title>
+  <meta name="description" content="Volaille à Ciney : poulet entier, blancs, cuisses, pilons, ailes, suprêmes. Découvrez nos découpes et comment les cuisiner.">
+  <meta name="theme-color" content="#5e1621">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:title" content="Volaille — Boucherie des Frères Paul">
+  <meta property="og:description" content="Volaille à Ciney : poulet entier, blancs, cuisses, pilons, ailes, suprêmes. Découvrez nos découpes et comment les cuisiner.">
+  <meta property="og:image" content="images/animaux/volaille.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- Gabarit commun aux pages animaux : seul data-animal (et le titre/description) change -->
+<body data-animal="volaille">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">Frères Paul<span>Boucherie · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li class="nav__sous">
+            <a href="index.html#viandes">Nos viandes</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Porc</a></li>
+              <li><a href="boeuf.html">Bœuf</a></li>
+              <li><a href="veau.html">Veau</a></li>
+              <li><a href="agneau.html">Agneau</a></li>
+              <li><a href="volaille.html">Volaille</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#maison">La maison</a></li>
+          <li><a href="index.html#specialites">Spécialités</a></li>
+          <li><a href="index.html#commandes">Commandes</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Appeler</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero hero--animal">
+      <img class="hero__img" id="animal-photo" alt="" width="1600" height="1067">
+      <div class="hero__content">
+        <p class="eyebrow">Nos viandes</p>
+        <h1>Volaille</h1>
+        <p class="hero__sub" id="animal-accroche"></p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#decoupe">Voir les morceaux</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section decoupe" id="decoupe">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">La découpe</p>
+          <h2>Planche du boucher</h2>
+          <p>Survolez ou touchez un morceau pour le découvrir.</p>
+        </div>
+        <div class="planche__dessin reveal" id="dessin"></div>
+        <div class="encart reveal" id="encart" hidden></div>
+      </div>
+    </section>
+
+    <section class="section fiches-section" aria-labelledby="fiches-titre">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Nos morceaux</p>
+          <h2 id="fiches-titre">Comment les cuisiner</h2>
+        </div>
+        <div class="fiches" id="fiches"></div>
+      </div>
+    </section>
+
+    <section class="section autres-section">
+      <div class="container">
+        <div class="commander reveal">
+          <h2>Un conseil, une commande ?</h2>
+          <p>Laissez-nous vous conseiller et manger deviendra un vrai plaisir !</p>
+          <a class="btn btn--primary" href="tel:+3283231156">Commander par téléphone : 083 23 11 56</a>
+        </div>
+        <h2 class="autres__titre reveal">Nos autres viandes</h2>
+        <ul class="autres reveal" id="autres"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo">Frères Paul<span>Boucherie · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Horaires</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Liens</p>
+        <ul class="footer__liste">
+          <li><a href="index.html#viandes">Nos viandes</a></li>
+          <li><a href="index.html#specialites">Spécialités</a></li>
+          <li><a href="index.html#commandes">Commandes</a></li>
+          <li><a href="index.html#contact">Contact & accès</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+      <p>Site réalisé par Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="dessins.js"></script>
+  <script src="script.js"></script>
+  <script src="animal.js"></script>
+</body>
+</html>

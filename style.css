@@ -1,0 +1,501 @@
+/* =========================================================
+   Boucherie des Frères Paul — feuille de style (mobile d'abord)
+   ========================================================= */
+
+:root {
+  --bordeaux: #5e1621;
+  --bordeaux-vif: #8a2433;
+  --creme: #f6efe3;
+  --ivoire: #fbf7f0;
+  --charbon: #1c1a19;
+  --charbon-doux: #3a3533;
+  --dore: #b8945a;
+  --dore-clair: #d9bf8c;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --radius: 4px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --header-h: 68px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+body {
+  margin: 0;
+  font: 400 1rem/1.7 var(--sans);
+  color: var(--charbon);
+  background: var(--ivoire);
+  -webkit-font-smoothing: antialiased;
+}
+/* Texture de grain légère, par-dessus tout le site */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: .07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0 0 .6em; }
+h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 2px solid var(--dore); outline-offset: 3px; }
+
+.container { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+.section { padding: clamp(4rem, 10vw, 7rem) 0; }
+.section__head { max-width: 620px; margin-bottom: 2.5rem; }
+.eyebrow {
+  font-size: .78rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--bordeaux-vif);
+  font-weight: 600;
+  margin-bottom: .8rem;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link {
+  position: absolute; left: 1rem; top: -100px; z-index: 200;
+  background: var(--charbon); color: var(--creme); padding: .6rem 1rem;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-block;
+  padding: .95rem 1.7rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: .95rem;
+  text-decoration: none;
+  letter-spacing: .02em;
+  border: 1px solid transparent;
+  transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--bordeaux); color: var(--ivoire); }
+.btn--primary:hover { background: var(--bordeaux-vif); }
+.btn--ghost { border-color: var(--dore-clair); color: var(--ivoire); }
+.btn--ghost:hover { background: var(--ivoire); color: var(--charbon); }
+.btn--gold { background: var(--dore); color: var(--charbon); }
+.btn--gold:hover { background: var(--dore-clair); }
+.btn--small { padding: .55rem 1.1rem; font-size: .88rem; }
+
+/* ---------- En-tête ---------- */
+.header {
+  position: fixed; inset: 0 0 auto; z-index: 50;
+  height: var(--header-h);
+  color: var(--ivoire);
+  transition: background .4s, box-shadow .4s;
+}
+.header.is-scrolled, .header.is-open { background: var(--charbon); box-shadow: 0 2px 20px rgb(0 0 0 / .25); }
+.header__inner {
+  height: 100%;
+  width: min(1280px, 100% - 2.5rem); margin-inline: auto;
+  display: flex; align-items: center; gap: 1rem;
+}
+.logo {
+  font-family: var(--serif); font-size: 1.4rem; text-decoration: none; line-height: 1;
+  margin: 0 auto 0 0;
+}
+.logo span {
+  display: block; font-family: var(--sans); font-size: .62rem; letter-spacing: .25em;
+  text-transform: uppercase; color: var(--dore-clair); margin-top: .3rem;
+}
+.nav ul { list-style: none; margin: 0; padding: 0; }
+.nav a { text-decoration: none; position: relative; }
+
+/* Menu mobile */
+.burger {
+  width: 44px; height: 44px; background: none; border: 0; cursor: pointer;
+  display: grid; place-content: center; gap: 6px; padding: 0;
+}
+.burger span { width: 24px; height: 2px; background: var(--ivoire); transition: transform .3s, opacity .3s; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width: 1099px) {
+  .nav {
+    position: fixed; inset: var(--header-h) 0 auto;
+    background: var(--charbon);
+    padding: 1rem 1.25rem 2rem;
+    visibility: hidden; opacity: 0; transform: translateY(-10px);
+    transition: opacity .3s, transform .3s, visibility .3s;
+  }
+  .header.is-open .nav { visibility: visible; opacity: 1; transform: none; }
+  .nav a { display: block; padding: .9rem 0; font-family: var(--serif); font-size: 1.4rem; border-bottom: 1px solid rgb(255 255 255 / .08); }
+}
+@media (min-width: 1100px) {
+  .burger { display: none; }
+  .nav ul { display: flex; gap: 2rem; }
+  .nav a { font-size: .92rem; }
+  .nav a::after {
+    content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px;
+    background: var(--dore); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
+  }
+  .nav a:hover::after { transform: scaleX(1); }
+}
+
+/* Sous-menu « Nos viandes » : déplié dans le menu mobile, déroulant sur ordinateur */
+.sous-menu a { font-size: 1.1rem; }
+@media (max-width: 1099px) {
+  .nav { max-height: calc(100svh - var(--header-h)); overflow-y: auto; }
+  .sous-menu { padding-left: 1.25rem !important; }
+  .sous-menu a { font-size: 1.1rem; padding: .6rem 0; color: var(--dore-clair); }
+}
+@media (min-width: 1100px) {
+  .nav__sous { position: relative; }
+  .sous-menu {
+    position: absolute; top: calc(100% + 14px); left: -1rem; min-width: 180px;
+    display: grid !important; gap: 0 !important; padding: .5rem 0 !important;
+    background: var(--charbon); border-top: 2px solid var(--dore); border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: 0 16px 30px -12px rgb(0 0 0 / .5);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .25s, transform .25s, visibility .25s;
+  }
+  /* Pont invisible pour ne pas perdre le survol entre le lien et le menu */
+  .sous-menu::before { content: ""; position: absolute; inset: -16px 0 auto; height: 16px; }
+  .nav__sous:hover .sous-menu, .nav__sous:focus-within .sous-menu { opacity: 1; visibility: visible; transform: none; }
+  .sous-menu a { display: block; padding: .5rem 1rem; font-size: .9rem; }
+  .sous-menu a::after { display: none; }
+  .sous-menu a:hover { color: var(--dore-clair); background: rgb(255 255 255 / .05); }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; min-height: 100svh;
+  display: grid; place-items: center; text-align: center;
+  color: var(--ivoire); overflow: hidden; isolation: isolate;
+}
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; animation: zoom 12s var(--ease) both; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgb(20 12 12 / .55), rgb(20 12 12 / .75));
+}
+.hero__content { padding: 6rem 1.25rem 3rem; max-width: 1000px; }
+.hero .eyebrow { color: var(--dore-clair); }
+.hero h1 { font-size: clamp(2.8rem, 10vw, 6.5rem); font-weight: 500; margin-bottom: .25em; }
+.hero__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 3vw, 1.6rem); color: var(--creme); }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
+@keyframes zoom { from { transform: scale(1.08); } }
+
+/* ---------- Notre maison ---------- */
+.maison__grid { display: grid; gap: 3rem; align-items: center; }
+.maison__photo { margin: 0; position: relative; }
+.maison__photo img { border-radius: var(--radius); }
+.maison__photo::before {
+  content: ""; position: absolute; inset: 1rem -1rem -1rem 1rem;
+  border: 1px solid var(--dore); border-radius: var(--radius); z-index: -1;
+}
+@media (min-width: 900px) { .maison__grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+
+/* ---------- Nos viandes : accordéon (accueil) ---------- */
+.viandes { background: var(--charbon); color: var(--creme); padding-top: clamp(4rem, 10vw, 7rem); }
+.viandes h2 { color: var(--ivoire); }
+.viandes .eyebrow { color: var(--dore-clair); }
+.accordeon {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; height: 72svh; min-height: 440px;
+  touch-action: pan-y; /* le défilement vertical reste au navigateur, le glissé horizontal change d'animal */
+}
+/* Photo plein cadre de l'animal actif, en fondu enchaîné */
+.accordeon__fonds { position: absolute; inset: 0; z-index: -1; }
+.accordeon__fond {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.02);
+  transition: opacity .6s var(--ease), transform 7s ease-out;
+}
+.accordeon__fond.is-active { opacity: 1; transform: scale(1.1); }
+.volet {
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+  flex: .6 1 0; min-width: 0;
+  color: var(--ivoire); text-decoration: none;
+  border-left: 1px solid rgb(217 191 140 / .45);
+  transition: flex-grow .6s var(--ease);
+}
+.volet:first-of-type { border-left: 0; }
+/* Volet ouvert ≈ 68 % de la largeur sur téléphone, ≈ 70 % sur ordinateur */
+.volet.is-open { flex-grow: 5; }
+.volet::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgb(20 12 12 / .5);
+  transition: background .6s;
+}
+.volet.is-open::before { background: linear-gradient(180deg, rgb(20 12 12 / .05) 30%, rgb(20 12 12 / .85) 100%); }
+.volet:not(.is-open):hover::before { background: rgb(94 22 33 / .45); }
+.volet__vertical {
+  position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%) rotate(180deg);
+  writing-mode: vertical-rl; white-space: nowrap;
+  font: 500 1.25rem var(--serif); letter-spacing: .05em;
+  transition: opacity .3s;
+}
+.volet.is-open .volet__vertical { opacity: 0; }
+.volet__contenu {
+  display: grid; justify-items: start; gap: .5rem;
+  width: min(440px, 60vw); flex: none;
+  padding: 1.5rem 1.1rem;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .4s, transform .6s var(--ease);
+  pointer-events: none;
+}
+.volet.is-open .volet__contenu { opacity: 1; transform: none; transition-delay: .25s; pointer-events: auto; }
+.volet__nom { font: 500 clamp(2rem, 7vw, 4.2rem)/1 var(--serif); }
+.volet__accroche { font: italic 500 clamp(.95rem, 2.5vw, 1.15rem)/1.4 var(--serif); color: var(--creme); }
+.volet .btn { margin-top: .5rem; padding: .7rem 1.1rem; font-size: .85rem; }
+.volet:focus-visible { outline-offset: -4px; }
+
+@media (min-width: 768px) {
+  .accordeon { height: 70vh; min-height: 460px; }
+  .volet { flex-basis: 0; flex-shrink: 1; flex-grow: .75; }
+  /* 7 / (7 + 4 × 0,75) = 70 % */
+  .volet.is-open { flex-grow: 7; }
+  .volet__vertical { font-size: 1.9rem; bottom: 2rem; }
+  .volet__contenu { padding: 3rem; }
+  .volet .btn { padding: .95rem 1.7rem; font-size: .95rem; }
+}
+
+/* ---------- Pages animaux : hero ---------- */
+.hero--animal { min-height: 72svh; }
+
+/* ---------- Planche de découpe (photo) ---------- */
+.decoupe { background: var(--creme); }
+.planche__dessin {
+  background: var(--charbon);
+  border: 1px solid var(--dore-clair);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.planche__dessin svg { width: 100%; height: auto; display: block; }
+
+/* Assombrit le décor autour de l'animal */
+.voile { fill: rgb(28 26 25 / .45); pointer-events: none; }
+.corps { fill: none; stroke: rgb(255 255 255 / .85); stroke-width: 1.5; stroke-linejoin: round; pointer-events: none; }
+.zone {
+  fill: transparent;
+  stroke: rgb(255 255 255 / .8); stroke-width: 1.2; stroke-dasharray: 5 3;
+  cursor: pointer; transition: fill .3s;
+}
+.zone-lien { outline: none; }
+.zone-lien:hover .zone, .zone-lien:focus-visible .zone { fill: rgb(138 36 51 / .6); }
+.zone-lien:focus-visible .zone { stroke: var(--dore); stroke-width: 3; stroke-dasharray: none; }
+.label {
+  font: 600 italic 22px var(--serif);
+  fill: var(--charbon);
+  paint-order: stroke;
+  stroke: var(--ivoire); stroke-width: 6px;
+  text-anchor: middle;
+  pointer-events: none;
+  opacity: 0; transition: opacity .2s;
+}
+.label.is-visible { opacity: 1; }
+
+/* ---------- Fiches des morceaux ---------- */
+.fiches { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.fiche {
+  background: var(--creme); border-radius: var(--radius); overflow: hidden;
+  border-top: 3px solid transparent;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+}
+.fiche:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgb(28 26 25 / .4); }
+/* Fiche atteinte depuis la planche : mise en évidence */
+.fiche:target { border-color: var(--bordeaux); box-shadow: 0 0 0 3px rgb(138 36 51 / .25); }
+.fiche__img { aspect-ratio: 4 / 3; overflow: hidden; }
+.fiche__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.fiche:hover .fiche__img img { transform: scale(1.05); }
+.fiche__corps { padding: 1.5rem; }
+.fiche h3 { font-size: 1.6rem; margin-bottom: .4rem; }
+.fiche h4 { font: 600 .7rem var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--bordeaux-vif); margin: 1.1rem 0 .4rem; }
+.fiche p { margin: 0; color: var(--charbon-doux); }
+.puces { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+.puces li { font-size: .82rem; padding: .15rem .65rem; border: 1px solid rgb(94 22 33 / .25); border-radius: 999px; color: var(--bordeaux); }
+.fiche .fiche__prix { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgb(28 26 25 / .1); font-weight: 600; color: var(--charbon); }
+
+/* ---------- Commander + autres animaux ---------- */
+.autres-section { background: var(--creme); }
+.commander { text-align: center; max-width: 640px; margin: 0 auto 4rem; }
+.commander p { font: italic 500 1.25rem var(--serif); color: var(--bordeaux); }
+.autres__titre { font-size: 1.6rem; text-align: center; }
+.autres { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.autre { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius); color: var(--ivoire); text-decoration: none; isolation: isolate; }
+.autre img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .8s var(--ease); }
+.autre::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 30%, rgb(20 12 12 / .8)); }
+.autre span { position: absolute; left: 1rem; bottom: .8rem; font: 500 1.6rem var(--serif); }
+.autre:hover img { transform: scale(1.08); }
+
+/* ---------- Plat du jour ---------- */
+.plat__card {
+  display: grid; overflow: hidden; border-radius: var(--radius);
+  background: var(--bordeaux); color: var(--ivoire);
+  box-shadow: 0 30px 60px -30px rgb(94 22 33 / .6);
+}
+.plat__card img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+.plat__body { padding: clamp(1.75rem, 5vw, 3.5rem); align-self: center; }
+.plat__body .eyebrow { color: var(--dore-clair); }
+.plat__body h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.plat__meta { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgb(217 191 140 / .35); }
+.plat__prix { font-family: var(--serif); font-size: 2.2rem; color: var(--dore-clair); }
+.plat__date { font-size: .9rem; color: var(--creme); }
+@media (min-width: 800px) { .plat__card { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- Spécialités ---------- */
+.specialites { background: var(--creme); }
+.cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.card {
+  background: var(--ivoire); border-radius: var(--radius); overflow: hidden;
+  transition: transform .4s var(--ease), box-shadow .4s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgb(28 26 25 / .35); }
+.card__img { overflow: hidden; aspect-ratio: 4 / 3; }
+.card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.card:hover .card__img img { transform: scale(1.06); }
+.card__body { padding: 1.5rem; }
+.card h3 { font-size: 1.35rem; margin-bottom: .4rem; }
+.card p { color: var(--charbon-doux); font-size: .95rem; margin: 0; }
+
+.card__produits { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+.card__produits li { font-size: .8rem; padding: .15rem .65rem; border: 1px solid rgb(94 22 33 / .25); border-radius: 999px; color: var(--bordeaux); }
+
+/* ---------- Équipe ---------- */
+.equipe__grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.membre { text-align: center; }
+.membre img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.2rem; filter: grayscale(.15); transition: filter .5s; }
+.membre:hover img { filter: none; }
+.membre h3 { font-size: 1.6rem; margin-bottom: .2rem; }
+.membre a { color: var(--bordeaux); text-decoration: none; font-weight: 500; }
+.membre a:hover { text-decoration: underline; text-decoration-color: var(--dore); }
+
+/* ---------- Produit phare ---------- */
+.phare { background: var(--charbon); color: var(--creme); }
+.phare__grid { display: grid; gap: 2.5rem; align-items: center; }
+.phare__grid img { border-radius: var(--radius); outline: 1px solid var(--dore); outline-offset: 10px; }
+.phare .eyebrow { color: var(--dore-clair); }
+.phare h2 { color: var(--ivoire); }
+@media (min-width: 900px) { .phare__grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+
+/* ---------- Congés & infos pratiques ---------- */
+.conges {
+  display: inline-block; margin-bottom: 1.5rem; padding: .5rem 1.1rem;
+  background: var(--dore); color: var(--charbon); border-radius: var(--radius); font-weight: 600; font-size: .9rem;
+}
+.conges[hidden] { display: none; }
+.horaires__note { font-size: .88rem; color: var(--charbon-doux); margin-top: .8rem; }
+
+/* ---------- Avis ---------- */
+.avis { background: var(--charbon); color: var(--creme); padding: 3.5rem 0; }
+.avis__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem 2.5rem; text-align: center; }
+.avis__note { font-family: var(--serif); font-size: 3.4rem; line-height: 1; color: var(--ivoire); }
+.avis__note small { font-size: 1.4rem; color: var(--dore-clair); }
+.etoiles { color: var(--dore); font-size: 1.4rem; letter-spacing: .15em; }
+.avis__inner .btn--ghost { color: var(--creme); }
+
+/* ---------- Contact ---------- */
+.contact__grid { display: grid; gap: 3rem; }
+@media (min-width: 900px) { .contact__grid { grid-template-columns: 1fr 1.2fr; gap: 4rem; } }
+address { font-style: normal; font-size: 1.1rem; margin-bottom: 1.5rem; }
+.contact__tel { display: inline-block; margin-top: .6rem; font-family: var(--serif); font-size: 1.6rem; color: var(--bordeaux); text-decoration: none; }
+.contact__tel:hover { text-decoration: underline; text-decoration-color: var(--dore); }
+.statut { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; padding: .4rem .9rem; border-radius: 999px; background: var(--creme); }
+.statut::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.statut.is-open { color: #2f6b3a; }
+.statut.is-closed { color: var(--bordeaux-vif); }
+.horaires { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.horaires th, .horaires td { padding: .65rem .75rem; border-bottom: 1px solid rgb(28 26 25 / .1); text-align: left; font-weight: 400; }
+.horaires td { text-align: right; }
+.horaires tr.is-today { background: var(--bordeaux); color: var(--ivoire); }
+.horaires tr.is-today th { font-weight: 600; }
+.carte iframe { width: 100%; height: 100%; min-height: 380px; border: 0; border-radius: var(--radius); filter: sepia(.25) saturate(.85); }
+.carte a { font-size: .85rem; }
+
+/* ---------- Pied de page ---------- */
+.footer { background: var(--charbon); color: var(--creme); padding: 3rem 0; font-size: .9rem; border-top: 1px solid rgb(184 148 90 / .3); }
+.footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+.footer .logo { margin-bottom: 1rem; }
+.footer a { color: var(--dore-clair); }
+
+/* ---------- La maison : valeurs et accroche ---------- */
+.valeurs { font: 600 .8rem var(--sans); letter-spacing: .25em; text-transform: uppercase; color: var(--dore); margin-top: 1.5rem; }
+.accroche { margin: 1rem 0 0; padding-left: 1.2rem; border-left: 2px solid var(--bordeaux); font: italic 500 1.35rem/1.4 var(--serif); color: var(--bordeaux); }
+
+/* ---------- Engagements ---------- */
+.engagements { padding-top: 0; }
+.engagements__grid { display: grid; gap: 1.5rem; }
+@media (min-width: 700px) { .engagements__grid { grid-template-columns: repeat(3, 1fr); } }
+.engagement { text-align: center; padding: 2.2rem 1.5rem; border: 1px solid var(--dore-clair); border-radius: var(--radius); transition: border-color .3s, transform .4s var(--ease); }
+.engagement:hover { border-color: var(--bordeaux); transform: translateY(-4px); }
+.engagement svg { width: 44px; height: 44px; fill: none; stroke: var(--bordeaux); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; margin-bottom: 1rem; transition: transform .4s var(--ease); }
+.engagement:hover svg { transform: scale(1.1) rotate(-4deg); }
+.engagement h3 { font-size: 1.35rem; margin-bottom: .3rem; }
+.engagement p { margin: 0; color: var(--charbon-doux); }
+
+/* ---------- Encart Porc Bien Acquis ---------- */
+.encart { margin-top: 2rem; padding: 2rem; background: var(--ivoire); border: 1px solid var(--dore); border-left: 4px solid var(--bordeaux); border-radius: var(--radius); }
+.encart[hidden] { display: none; }
+.encart__label { font: 600 .72rem var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--dore); margin-bottom: .3rem; }
+.encart h3 { font-size: 1.7rem; color: var(--bordeaux); margin-bottom: .4rem; }
+.encart ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+.encart li::before { content: "✓ "; color: var(--bordeaux); font-weight: 700; }
+
+/* ---------- Boudin de Noël : touche festive ---------- */
+.phare { position: relative; overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgb(184 148 90 / .18) 0 1.5px, transparent 2px) 0 0 / 46px 46px,
+    radial-gradient(circle at 70% 60%, rgb(184 148 90 / .12) 0 1px, transparent 1.5px) 0 0 / 31px 31px,
+    linear-gradient(160deg, #2a0d12, var(--charbon) 60%);
+}
+.phare .eyebrow::before { content: "✦ "; color: var(--dore); }
+
+/* ---------- Commandes ---------- */
+.commandes__liste { list-style: none; padding: 0; margin: 0 0 2.5rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.commande { background: var(--creme); overflow: hidden; border-radius: var(--radius); border-top: 2px solid var(--dore); transition: transform .4s var(--ease), box-shadow .4s; }
+.commande:hover { transform: translateY(-4px); box-shadow: 0 16px 30px -18px rgb(28 26 25 / .35); }
+.commande h3 { font-size: 1.25rem; margin-bottom: .3rem; }
+.commande p { margin: 0; font-size: .95rem; color: var(--charbon-doux); }
+
+.commande__img { aspect-ratio: 16 / 9; overflow: hidden; }
+.commande__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.commande:hover .commande__img img { transform: scale(1.06); }
+.commande__corps { padding: 1.25rem 1.5rem 1.5rem; }
+
+/* ---------- Bandeau photo (valeurs) ---------- */
+.bandeau { position: relative; isolation: isolate; overflow: hidden; display: grid; place-items: center; min-height: 46vh; padding: 4rem 1.25rem; text-align: center; }
+.bandeau__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.bandeau::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(20 12 12 / .6); }
+.bandeau__texte { margin: 0; font: italic 500 clamp(1.8rem, 6vw, 3.6rem)/1.2 var(--serif); color: var(--ivoire); }
+.bandeau__texte span { color: var(--dore); }
+
+/* ---------- Galerie ---------- */
+.galerie { background: var(--creme); }
+.galerie__grid { display: grid; gap: .75rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .galerie__grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
+.galerie__item { margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; }
+.galerie__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.galerie__item:hover img { transform: scale(1.06); }
+
+/* ---------- Contact : téléphones et parking ---------- */
+.contact__freres { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.contact__freres a { color: var(--bordeaux); font-weight: 500; }
+.contact__droite { display: grid; gap: 1.5rem; align-content: start; }
+.parking { background: var(--creme); padding: 1.5rem; border-radius: var(--radius); border-left: 4px solid var(--bordeaux); }
+.parking p { margin: 0 0 .5rem; }
+.parking__titre { display: flex; align-items: center; gap: .6rem; font: 500 1.35rem var(--serif); }
+.parking__p { width: 1.7rem; height: 1.7rem; display: grid; place-items: center; font: 700 1rem var(--sans); background: var(--bordeaux); color: var(--ivoire); border-radius: 4px; }
+
+/* ---------- Pied de page : colonnes ---------- */
+.footer__titre { font: 600 .75rem var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--dore-clair); }
+.footer__liste { list-style: none; padding: 0; margin: 0; line-height: 2; }
+.footer__bas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgb(246 239 227 / .12); color: rgb(246 239 227 / .7); }
+.footer__bas p { margin: 0; }
+
+/* ---------- Apparition au scroll ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}

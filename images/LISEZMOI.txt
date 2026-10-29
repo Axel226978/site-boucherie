@@ -1,0 +1,33 @@
+IMAGES À FOURNIR — Boucherie des Frères Paul
+=============================================
+
+Remplacez chaque image de remplacement par une vraie photo EN GARDANT LE MÊME NOM.
+Format JPG, compressé (idéalement < 300 Ko, < 500 Ko pour hero.jpg).
+
+Fichier             Dimensions conseillées   Contenu
+------------------  -----------------------  ------------------------------------------------
+hero.jpg            1920 x 1080 (paysage)    Façade ou comptoir de la boucherie (fond du haut de page, assombri)
+interieur.jpg       1200 x 900               Intérieur de la boutique, comptoir, équipe au travail
+plat-du-jour.jpg    800 x 600                Photo du plat du jour (peut changer avec le plat, voir data.js)
+og-image.jpg        1200 x 630               Image affichée lors d'un partage sur Facebook / WhatsApp
+specialite-1.jpg    800 x 600                Nos principaux (boulettes, lasagne, vol-au-vent…)
+specialite-2.jpg    800 x 600                Charcuterie maison
+specialite-3.jpg    800 x 600                Plats préparés traiteur
+specialite-4.jpg    800 x 600                Fromages
+galerie-interieur.jpg          1000 x 750    Galerie : intérieur de la boutique
+galerie-boucher.jpg            1000 x 750    Galerie : boucher au travail
+galerie-saucisses-seches.jpg   1000 x 750    Galerie : saucisses sèches
+galerie-produits.jpg           1000 x 750    Galerie : produits de boucherie
+galerie-plats-prepares.jpg     1000 x 750    Galerie : plats préparés
+galerie-buffet-froid.jpg       1000 x 750    Galerie : buffet froid
+boudin-noel.jpg     1200 x 900               Boudin de Noël (produit phare de saison)
+equipe-sebastien.jpg 600 x 750 (portrait)    Portrait de Sébastien
+equipe-olivier.jpg  600 x 750 (portrait)     Portrait d'Olivier
+equipe-benjamin.jpg 600 x 750 (portrait)     Portrait de Benjamin
+
+Photos des viandes (déjà fournies : Unsplash pour les animaux, Wikimedia Commons pour les morceaux, voir CREDITS.txt)
+animaux/porc.jpg … volaille.jpg   1600 px de large   Accordéon de l'accueil + haut des pages animaux
+viandes/<animal>-<morceau>.jpg    900 x 675          Fiches des morceaux (le fichier utilisé par
+                                                     chaque morceau est indiqué dans data.js)
+
+Les textes associés (spécialités, plat du jour, équipe, produit phare, morceaux) se modifient dans data.js.

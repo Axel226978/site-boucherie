@@ -1,0 +1,106 @@
+﻿CRÉDITS PHOTOS — images de démonstration
+=========================================
+
+Toutes ces photos viennent d'Unsplash (licence Unsplash : utilisation gratuite,
+commerciale comprise, attribution non obligatoire mais appréciée).
+https://unsplash.com/license
+
+Ce sont des photos de DÉMONSTRATION, à remplacer idéalement par vos propres
+photos (même nom de fichier).
+
+Fichier                    Auteur                    Source
+-------------------------  ------------------------  --------------------------------------------------------------
+animaux/porc.jpg           brittany sawyer           https://unsplash.com/photos/L8E-khMdFtQ
+animaux/boeuf.jpg          Alexandr Podvalny         https://unsplash.com/photos/eGFmwUY20Ag
+animaux/veau.jpg           gabrielle dreiling        https://unsplash.com/photos/0WH3YdAZNqE
+animaux/agneau.jpg         Frédéric Dupont           https://unsplash.com/photos/sZ049Hp3cbI
+animaux/volaille.jpg       Thomas Iversen            https://unsplash.com/photos/4W8FgDVyUME
+
+
+Photos des planches de découpe (pages animaux) — Wikimedia Commons. Les contours et
+zones cliquables sont tracés sur ces photos dans dessins.js : à retracer si on les change.
+
+planches/porc.jpg                Keystone International                    CC BY 2.0       https://commons.wikimedia.org/wiki/File:Champion_Landrace_Barrow,_Open_Show_(cropped).jpg
+planches/boeuf.jpg               WannapaNillapan                           CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Beef_KPS.jpg
+planches/veau.jpg                4028mdk09                                 CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Bullenkalb.JPG
+planches/agneau.jpg              olive.titus                               CC BY 2.0       https://commons.wikimedia.org/wiki/File:Agneau_au_pr%C3%A9,_Gries,_Bas-Rhin_-_54482635354.jpg
+planches/volaille.jpg            3268zauber                                CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Dorking_Henne.JPG
+
+Photos des morceaux — Wikimedia Commons (licences Creative Commons ou domaine public :
+l'auteur doit être cité, c'est fait sur mentions-legales.html). Une photo par morceau.
+
+viandes/porc-tete.jpg              Herr Rau                                  CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Pig%27s_head,_sideways.jpg
+viandes/porc-echine.jpg            Pannet                                    CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Pork_neck_02.jpg
+viandes/porc-carre.jpg             Peachyeung316                             CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Tomahawk_Pork_Chop_from_Netherlands.jpg
+viandes/porc-filet.jpg             Pannet                                    CC BY 4.0       https://commons.wikimedia.org/wiki/File:Pork_loin.jpg
+viandes/porc-filet-mignon.jpg      Rainer Zenz                              CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Schweinefilet-1.jpg
+viandes/porc-epaule.jpg            Alice Wiegand                             CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Schweineschulter_150322_AW.jpg
+viandes/porc-poitrine.jpg          Rainer Zenz                               CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Schweinebauch-2.jpg
+viandes/porc-jambon.jpg            Jens Jäpel                                CC BY 2.5       https://commons.wikimedia.org/wiki/File:Eisbein_und_Spitzbein.jpg
+viandes/porc-jarret.jpg            Rainer Zenz                               CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Eisbein-1.jpg
+viandes/porc-pied.jpg              Fumikas Sagisavas                         CC0             https://commons.wikimedia.org/wiki/File:Pig%27s_trotter.jpg
+viandes/boeuf-collier.jpg          Hangsna                                   CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:H%C3%B6grev,_r%C3%A5.jpg
+viandes/boeuf-basses-cotes.jpg     ウィ貴公子                                     CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:U.S._%E3%83%97%E3%83%A9%E3%82%A4%E3%83%A0%E3%83%93%E3%83%BC%E3%83%95_%E8%82%A9%E3%83%AD%E3%83%BC%E3%82%B9_%E3%81%8B%E3%81%9F%E3%81%BE%E3%82%8A_%E3%82%B3%E3%82%B9%E3%83%88%E3%82%B3%E5%B7%9D%E5%B4%8E%E5%80%89%E5%BA%AB_2024%E5%B9%B48%E6%9C%881%E6%97%A5%E3%81%AE%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C_202408011914_IMG_9786.jpg
+viandes/boeuf-cote.jpg             The original uploader was MCB at English  CC BY-SA 2.5    https://commons.wikimedia.org/wiki/File:Rib-steak-raw-MCB.jpg
+viandes/boeuf-faux-filet.jpg       Maggie Osterberg                          CC BY-SA 2.5    https://commons.wikimedia.org/wiki/File:Strip-steak-MCB-MaggieO.jpg
+viandes/boeuf-filet.jpg            Markus Spiske Freeforcommercialuse Net    CC BY 3.0       https://commons.wikimedia.org/wiki/File:Fresh_Bio_Range_Land_Filet_Beef_(164927627).jpeg
+viandes/boeuf-rumsteck.jpg         Blammermouth (talk)                       CC BY 3.0       https://commons.wikimedia.org/wiki/File:Rump_steak.jpg
+viandes/boeuf-aloyau.jpg           MCB at English Wikipedia                  CC BY-SA 2.5    https://commons.wikimedia.org/wiki/File:T-bone-raw-MCB.jpg
+viandes/boeuf-bavette.jpg          Bortz60                                   CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Flank_Steak_piece_of_meat.jpg
+viandes/boeuf-onglet.jpg           Michael C. Berch / MCB at en.wikipedia    CC BY-SA 2.5    https://commons.wikimedia.org/wiki/File:Hanger-steak-raw-MCB.jpg
+viandes/boeuf-hampe.jpg            H. Alexander Talbot                       CC BY 2.0       https://commons.wikimedia.org/wiki/File:DoubleCutSkirtSteak_(8325602302).jpg
+viandes/boeuf-plat-de-cotes.jpg    Tim Evanson                               CC BY-SA 2.0    https://commons.wikimedia.org/wiki/File:Bone-in_chuck_short_ribs.jpg
+viandes/boeuf-paleron.jpg          pete                                      CC BY 2.0       https://commons.wikimedia.org/wiki/File:Chuck_steaks.jpg
+viandes/boeuf-macreuse.jpg         Fumikas Sagisavas                         CC0             https://commons.wikimedia.org/wiki/File:Frozen_beef_shoulder.jpg
+viandes/boeuf-gite.jpg             TACO Huang                                CC BY-SA 2.0    https://commons.wikimedia.org/wiki/File:G%C3%AEte_%C3%A0_la_noix_de_b%C5%93uf.jpg
+viandes/boeuf-jarret.jpg           Benutzer:Rainer Zenz / Rainer Zenz at Ge  CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Beinscheibe.jpg
+viandes/boeuf-queue.jpg            FotoosVanRobin                            CC BY-SA 2.0    https://commons.wikimedia.org/wiki/File:Raw_oxtail-01.jpg
+viandes/veau-tendron.jpg           Xocolatl  Public domain   https://commons.wikimedia.org/wiki/File:Gef%C3%BCllteKalbsbrust.jpg
+viandes/veau-poitrine.jpg          Xocolatl  Public domain   https://commons.wikimedia.org/wiki/File:Gef%C3%BCllteKalbsbrust-1.jpg
+viandes/veau-epaule.jpg            Nemracc                                   CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Inn,_Gasthaus_Neund%C3%B6rfer_in_Kirchaich,_roast_veal,_savoy_cabbage,_potato_dumpling.jpg
+viandes/veau-cotes.jpg             stu_spivack                               CC BY-SA 2.0    https://commons.wikimedia.org/wiki/File:Veal_chop,_2006.jpg
+viandes/veau-filet.jpg             Habib M'henni                             CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Filet_de_veau,_entier..jpg
+viandes/veau-longe.jpg             stu_spivack                               CC BY-SA 2.0    https://commons.wikimedia.org/wiki/File:Veal_loin.jpg
+viandes/veau-noix.jpg              Andreas Kaiser, Neu-Ulm Pfuhl, Germany    CC BY-SA 3.0 de https://commons.wikimedia.org/wiki/File:Kalbsnuss.jpg
+viandes/veau-sous-noix.jpg         tendencies                                CC BY-SA 2.0    https://commons.wikimedia.org/wiki/File:IGP_Coteaux_de_Mont%C3%A9limar_rouge_et_r%C3%B4ti_de_veau_du_Massif_de_Chambaran.jpg
+viandes/veau-quasi.jpg             Benoît Prieur                             CC0             https://commons.wikimedia.org/wiki/File:Quasi_de_veau_au_jus_de_romarin_Le_Cheval_Blanc_(Montluel)_ao%C3%BBt_2022.jpg
+viandes/veau-jarret.jpg            Mogens Engelund                           CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Veal-shank.jpg
+viandes/veau-escalopes.jpg         Fanny Schertzer                           CC BY 3.0       https://commons.wikimedia.org/wiki/File:Saltimbocca_raw_(2).jpg
+viandes/agneau-collier.jpg         Kolforn (Kolforn) I'd appreciate if you   CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:-2022-02-08_Sliced_neck_of_lamb,_Trimingham,_Norfolk.JPG
+viandes/agneau-epaule.jpg          Inapond                                   CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:Lammbog.jpg
+viandes/agneau-carre.jpg           User:Stephane8888 (Stephane8888 Wiktionn  CC BY-SA 2.5    https://commons.wikimedia.org/wiki/File:Rack_Carr%C3%A9_d%27agneau.JPG
+viandes/agneau-cotelettes.jpg      Photo by User:Salimfadhley                CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Raw_lamb_cutlets_with_shredded_ginger_and_rosemary.jpg
+viandes/agneau-selle.jpg           Kolforn (Kolforn) I'd appreciate if you   CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:-2020-20-21_Uncooked_double_lamb_chops,_Trimingham,_Norfolk.JPG
+viandes/agneau-filet.jpg           Kolforn (Kolforn) I'd appreciate if you   CC BY-SA 4.0    https://commons.wikimedia.org/wiki/File:-2022-01-06_Lamb_loin_chops,_Trimingham,_Norfolk.JPG
+viandes/agneau-gigot.jpg           DocteurCosmos                             CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Gigot_raccourci_cru_1.JPG
+viandes/agneau-souris.jpg          Benoît Prieur                             CC0             https://commons.wikimedia.org/wiki/File:Brasserie_Chanteclair_(Lyon)_-_souris_d%27agneau_(avril_2022).jpg
+viandes/volaille-entier.jpg        Nesnad                                    CC BY 4.0       https://commons.wikimedia.org/wiki/File:Whole_raw_chicken_-_Japan_Dec_22_2019.jpeg
+viandes/volaille-blanc.jpg         kakyusei                                  CC0             https://commons.wikimedia.org/wiki/File:Raw_chicken_slices.jpg
+viandes/volaille-cuisse.jpg        gran                                      CC BY 3.0       https://commons.wikimedia.org/wiki/File:Raw_chicken_thighs.jpg
+viandes/volaille-pilon.jpg         Harald the Bard                           CC0             https://commons.wikimedia.org/wiki/File:Chicken_drumsticks_and_legs.jpg
+viandes/volaille-aile.jpg          ProjectManhattan, crop and changes: User  CC BY-SA 3.0    https://commons.wikimedia.org/wiki/File:Plucked_chicken_wing.jpg
+viandes/volaille-supreme.jpg       Harald the Bard                           CC0             https://commons.wikimedia.org/wiki/File:Chicken_breasts_and_wing_quarters.jpg
+
+hero.jpg / og-image.jpg    Kyle Mackie               https://unsplash.com/photos/qgfjZUXup1M
+interieur.jpg              Candes J                  https://unsplash.com/photos/PG02K4OnvQo
+bandeau.jpg                Iñigo De la Maza          https://unsplash.com/photos/LQJg_PXPPUs
+plat-du-jour.jpg           Nathan Dumlao             https://unsplash.com/photos/JXYdIWqA5IM
+specialite-1.jpg           Emanuel Ekström           https://unsplash.com/photos/flEUTTwGlJQ
+specialite-2.jpg           Mike Houser               https://unsplash.com/photos/yKYguw7dE6U
+specialite-3.jpg           Sanket Shah               https://unsplash.com/photos/eEWlcfydzQ4
+specialite-4.jpg           Andra C Taylor Jr         https://unsplash.com/photos/_L5MGd0w1FQ
+boudin-noel.jpg            Diego Arenas de Rodrigo   https://unsplash.com/photos/3QJiX_KMj5c
+galerie-interieur.jpg      tommao wang               https://unsplash.com/photos/kqytZ3VFb_o
+galerie-boucher.jpg        Kyle Mackie               https://unsplash.com/photos/effAM7L50fI
+galerie-saucisses-seches.jpg  Edi Libedinsky         https://unsplash.com/photos/Wp3qbHlw1mI
+galerie-produits.jpg       Danielle Suijkerbuijk     https://unsplash.com/photos/NWo2mDYnfjY
+galerie-plats-prepares.jpg Clare Andrews             https://unsplash.com/photos/rBhXooUziZc
+galerie-buffet-froid.jpg   Tim Cooper                https://unsplash.com/photos/1R7iHPt63Lc
+commandes/barbecue.jpg     Victoria Shes             https://unsplash.com/photos/UC0HZdUitWY
+commandes/colis.jpg        Jez Timms                 https://unsplash.com/photos/6JQMjhqpVhE
+commandes/buffet-froid.jpg Saile Ilyas               https://unsplash.com/photos/SiwrpBnxDww
+commandes/pains-garnis.jpg Anna Sullivan             https://unsplash.com/photos/BtLSvyFcBS4
+commandes/fin-annee.jpg    Jed Owen                  https://unsplash.com/photos/O4wSmNb6w18
+
+Les portraits de l'équipe (equipe-*.jpg) restent des images de remplacement neutres :
+ils doivent montrer les vrais Sébastien, Olivier et Benjamin, pas des inconnus.
