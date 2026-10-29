@@ -14,7 +14,8 @@ if (modele && vue) {
   const fiche = $("#vue3d-fiche");
   const ensemble = $("#vue3d-ensemble");
   const aideInitiale = fiche.innerHTML;
-  const VUE_DEPART = "85deg 75deg auto"; // presque de profil : les points restent bien espacés
+  const ANGLES_DEPART = "85deg 75deg"; // presque de profil : les points restent bien espacés
+  const CHAMP = 30; // champ de vision fixe (degrés) : le cadrage se règle par la distance
 
   const repli = () => { vue.hidden = true; $("#dessin").hidden = false; };
 
@@ -23,8 +24,8 @@ if (modele && vue) {
     Object.entries({
       src: modele.src, alt: `${animal.nom} en 3D : touchez un point doré pour voir le morceau`,
       "camera-controls": "", "touch-action": "pan-y", "disable-pan": "", "interaction-prompt": "none",
-      "camera-orbit": VUE_DEPART, "min-camera-orbit": "auto 35deg auto", "max-camera-orbit": "auto 100deg auto",
-      "min-field-of-view": "14deg", "max-field-of-view": "40deg", "field-of-view": "auto",
+      "camera-orbit": `${ANGLES_DEPART} auto`, "field-of-view": `${CHAMP}deg`,
+      "min-field-of-view": `${CHAMP}deg`, "max-field-of-view": `${CHAMP}deg`,
       "shadow-intensity": "0.9", "shadow-softness": "1", exposure: "1.05", "environment-image": "neutral",
       "auto-rotate-delay": "3000", "rotation-per-second": "8deg"
     }).forEach(([k, v]) => mv.setAttribute(k, v));
@@ -38,9 +39,6 @@ if (modele && vue) {
           <span class="vue3d__nom" aria-hidden="true">${esc(morceauParId[id].nom)}</span>
         </button>`).join("")}`;
     scene.prepend(mv);
-    // Téléphone : les noms sont trop serrés sur la bête, ils passent en étiquettes sous la scène (CSS)
-    scene.insertAdjacentHTML("beforeend", `<div class="vue3d__liste">${Object.keys(modele.points).map((id) =>
-      `<button type="button" data-id="${esc(id)}">${esc(morceauParId[id].nom)}</button>`).join("")}</div>`);
 
     // La barre de chargement suit la progression, puis s'efface
     const barre = mv.querySelector(".vue3d__chargement");
@@ -52,30 +50,23 @@ if (modele && vue) {
 
     const bouger = () => { if (reduit) mv.jumpCameraToGoal(); };
 
-    // Noms des morceaux : chacun prend la première place libre autour de son point (droite, gauche, haut, bas)
-    const PLACES = ["droite", "gauche", "haut", "bas"];
-    const chevauche = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
-    const placerNoms = () => {
-      const points = [...mv.querySelectorAll(".vue3d__point[data-visible]")];
-      const occupes = points.map((p) => p.getBoundingClientRect());
-      for (const p of points) {
-        const nom = p.querySelector(".vue3d__nom");
-        const libre = PLACES.find((place) => {
-          nom.dataset.place = place;
-          const r = nom.getBoundingClientRect();
-          return !occupes.some((o) => chevauche(r, o));
-        });
-        if (!libre) nom.dataset.place = "droite";
-        occupes.push(nom.getBoundingClientRect());
-      }
+    // Cadrage : la bête occupe ~80 % de la largeur du cadre (et 85 % de sa hauteur au plus)
+    let rayon = 0;
+    const cadrer = () => {
+      const d = mv.getDimensions(), c = mv.getBoundingBoxCenter(), r = mv.getBoundingClientRect();
+      if (!d.z || !r.width) return;
+      const tan = Math.tan(CHAMP * Math.PI / 360);
+      // 0.88 et non 0.8 : la vue de trois quarts et la perspective raccourcissent la bête d'environ 10 %
+      const parLargeur = Math.max(d.z, d.x) / 0.88 / (2 * tan * (r.width / r.height));
+      const parHauteur = d.y / 0.85 / (2 * tan);
+      rayon = Math.max(parLargeur, parHauteur) + d.x / 2;
+      mv.cameraTarget = `${c.x}m ${c.y}m ${c.z}m`;
+      mv.minCameraOrbit = `auto 35deg ${rayon * 0.6}m`;
+      mv.maxCameraOrbit = `auto 100deg ${rayon * 1.3}m`;
     };
-    // Recalculé quand la caméra bouge, au plus toutes les 150 ms (pendant la rotation automatique)
-    let dernierPlacement = 0;
-    mv.addEventListener("camera-change", () => {
-      const t = performance.now();
-      if (t - dernierPlacement > 150) { dernierPlacement = t; requestAnimationFrame(placerNoms); }
-    });
-    mv.addEventListener("load", () => setTimeout(placerNoms, 100));
+    const vueDepart = () => { mv.cameraOrbit = `${ANGLES_DEPART} ${rayon}m`; };
+    mv.addEventListener("load", () => { cadrer(); vueDepart(); mv.jumpCameraToGoal(); });
+    new ResizeObserver(() => { if (mv.loaded) cadrer(); }).observe(mv);
 
     // Zones du modèle : une matière par morceau, nommée par son id (images/3d/*.glb)
     const BORDEAUX = [0.42, 0.06, 0.09, 1], SURVOL = [0.55, 0.2, 0.2, 1];
@@ -88,19 +79,16 @@ if (modele && vue) {
       if (teinte) m.pbrMetallicRoughness.setBaseColorFactor(teinte);
     });
 
-    // Choix d'un morceau : sa zone passe en bordeaux, la caméra se tourne vers lui et zoome, la fiche s'ouvre
+    // Choix d'un morceau : sa zone passe en bordeaux, la bête se tourne vers lui (sans zoom, elle reste entière)
     const choisir = (id) => {
-      const [p, [nx, ny, nz]] = modele.points[id];
+      const [, [nx, ny, nz]] = modele.points[id];
       const theta = Math.atan2(nx, nz) * 180 / Math.PI;
-      const phi = Math.min(95, Math.max(45, Math.acos(Math.max(-1, Math.min(1, ny))) * 180 / Math.PI));
+      const phi = Math.min(90, Math.max(60, Math.acos(Math.max(-1, Math.min(1, ny))) * 180 / Math.PI));
       mv.autoRotate = false;
-      mv.cameraTarget = p.map((v) => v + "m").join(" ");
-      mv.cameraOrbit = `${theta}deg ${phi}deg 55%`;
-      mv.fieldOfView = "24deg";
+      mv.cameraOrbit = `${theta}deg ${phi}deg ${rayon}m`;
       bouger();
       actif = id; colorer();
       mv.querySelectorAll(".vue3d__point").forEach((b) => b.classList.toggle("is-actif", b.dataset.id === id));
-      scene.querySelectorAll(".vue3d__liste button").forEach((b) => b.classList.toggle("is-actif", b.dataset.id === id));
       ouvrirFiche(morceauParId[id]);
       ensemble.hidden = false;
       // Téléphone : la fiche est sous la scène, on l'amène à l'écran
@@ -108,10 +96,6 @@ if (modele && vue) {
     };
 
     // Clic sur un point ou directement sur une zone de l'animal (mais pas à la fin d'une rotation à la souris)
-    scene.querySelector(".vue3d__liste").addEventListener("click", (e) => {
-      const b = e.target.closest("button");
-      if (b) choisir(b.dataset.id);
-    });
     let depart = null;
     mv.addEventListener("pointerdown", (e) => { depart = [e.clientX, e.clientY]; });
     mv.addEventListener("click", (e) => {
@@ -140,14 +124,11 @@ if (modele && vue) {
     }
 
     ensemble.addEventListener("click", () => {
-      mv.cameraTarget = "auto auto auto";
-      mv.cameraOrbit = VUE_DEPART;
-      mv.fieldOfView = "auto";
+      vueDepart();
       mv.autoRotate = !reduit;
       bouger();
       actif = null; colorer();
       mv.querySelectorAll(".vue3d__point").forEach((b) => b.classList.remove("is-actif"));
-      scene.querySelectorAll(".vue3d__liste button").forEach((b) => b.classList.remove("is-actif"));
       fiche.innerHTML = aideInitiale;
       ensemble.hidden = true;
     });
