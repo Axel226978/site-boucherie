@@ -9,43 +9,35 @@ const tactile = matchMedia("(hover: none)");
 /* ---------- Accordéon « Nos viandes » ---------- */
 const accordeon = $("#accordeon");
 if (accordeon) {
-  // La photo de l'animal actif couvre tout l'accordéon ; les volets sont posés par-dessus
+  // Une colonne par animal (un clic la choisit, sans changer de page) ; seul le bouton du panneau mène à la page
   accordeon.innerHTML = `
     <span class="accordeon__fonds" aria-hidden="true">
       ${SITE.animaux.map((a, i) => `<img class="accordeon__fond${i === 0 ? " is-active" : ""}" src="${esc(a.photo)}" alt="">`).join("")}
     </span>
-    ${SITE.animaux.map((a, i) => `
-    <a class="volet${i === 0 ? " is-open" : ""}" href="${esc(a.id)}.html" data-index="${i}" aria-label="${esc(T.voirMorceauxDe(a.nom))}">
-      <span class="volet__vertical" aria-hidden="true">${esc(a.nom)}</span>
-      <span class="volet__contenu" aria-hidden="true">
-        <span class="volet__nom">${esc(a.nom)}</span>
-        <span class="volet__accroche">${esc(a.accroche)}</span>
-        <span class="btn btn--gold">${T.voirMorceaux}</span>
-      </span>
-    </a>`).join("")}`;
+    <div class="accordeon__onglets" role="tablist">
+      ${SITE.animaux.map((a, i) => `
+      <button class="onglet${i === 0 ? " is-active" : ""}" type="button" role="tab" aria-selected="${i === 0}" aria-controls="accordeon-panneau" data-index="${i}">
+        <span class="onglet__nom">${esc(a.nom)}</span>
+      </button>`).join("")}
+    </div>
+    <div class="accordeon__panneau" id="accordeon-panneau" role="tabpanel"></div>`;
 
-  const volets = [...accordeon.querySelectorAll(".volet")];
+  const onglets = [...accordeon.querySelectorAll(".onglet")];
   const fonds = [...accordeon.querySelectorAll(".accordeon__fond")];
-  const ouvrirVolet = (volet) => {
-    volets.forEach((v) => v.classList.toggle("is-open", v === volet));
-    fonds.forEach((f, i) => f.classList.toggle("is-active", i === Number(volet.dataset.index)));
+  const panneau = $("#accordeon-panneau");
+  const choisir = (n) => {
+    const a = SITE.animaux[n];
+    onglets.forEach((o, i) => { o.classList.toggle("is-active", i === n); o.setAttribute("aria-selected", i === n); });
+    fonds.forEach((f, i) => f.classList.toggle("is-active", i === n));
+    panneau.innerHTML = `
+      <div class="accordeon__texte">
+        <h3 class="accordeon__nom">${esc(a.nom)}</h3>
+        <p class="accordeon__accroche">${esc(a.accroche)}</p>
+        <a class="btn btn--ghost" href="${esc(a.id)}.html" aria-label="${esc(T.voirMorceauxDe(a.nom))}">${T.voirMorceaux} <span aria-hidden="true">→</span></a>
+      </div>`;
   };
-
-  volets.forEach((volet) => {
-    volet.addEventListener("mouseenter", () => { if (!tactile.matches) ouvrirVolet(volet); });
-    volet.addEventListener("focus", () => ouvrirVolet(volet));
-    // Téléphone : le premier tap ouvre le volet, le suivant (ou le bouton) mène à la page
-    volet.addEventListener("click", (e) => {
-      if (tactile.matches && !volet.classList.contains("is-open")) { e.preventDefault(); ouvrirVolet(volet); }
-    });
-  });
-
-  // Téléphone : le volet sous le doigt s'ouvre quand on glisse de gauche à droite
-  accordeon.addEventListener("touchmove", (e) => {
-    const t = e.touches[0];
-    const volet = document.elementFromPoint(t.clientX, t.clientY)?.closest(".volet");
-    if (volet && !volet.classList.contains("is-open")) ouvrirVolet(volet);
-  }, { passive: true });
+  onglets.forEach((o, i) => o.addEventListener("click", () => choisir(i)));
+  choisir(0);
 }
 
 /* ---------- Hero de l'accueil : vidéo en boucle ---------- */

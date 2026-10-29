@@ -54,21 +54,6 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap && wi
     });
   });
 
-  /* ---------- Accordéon : inclinaison 3D du volet ouvert (souris uniquement) ---------- */
-  // accordeon : défini par pages.js (null hors de la page Nos viandes)
-  if (accordeon && matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    accordeon.addEventListener("mousemove", (e) => {
-      const volet = accordeon.querySelector(".volet.is-open");
-      const r = volet.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      volet.style.setProperty("--ry", `${x * 10}deg`);
-      volet.style.setProperty("--rx", `${-y * 10}deg`);
-    });
-    accordeon.addEventListener("mouseleave", () => accordeon.querySelectorAll(".volet").forEach((v) => {
-      v.style.removeProperty("--rx"); v.style.removeProperty("--ry");
-    }));
-  }
-
   /* ---------- Boudin de Noël : neige du 1er décembre au 6 janvier ---------- */
   const encart = $("#phare");
   const mois = maintenant.getMonth(), jour = maintenant.getDate();

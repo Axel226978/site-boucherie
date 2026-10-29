@@ -233,8 +233,8 @@ p { margin: 0 0 1em; }
 .viandes .eyebrow { color: var(--dore-clair); }
 .accordeon {
   position: relative; isolation: isolate; overflow: hidden;
-  display: flex; height: 72svh; min-height: 440px;
-  touch-action: pan-y; /* le défilement vertical reste au navigateur, le glissé horizontal change d'animal */
+  display: grid; height: 72svh; min-height: 520px;
+  width: min(1280px, 100% - 2.5rem); margin-inline: auto; border-radius: 10px;
 }
 /* Photo plein cadre de l'animal actif, en fondu enchaîné */
 .accordeon__fonds { position: absolute; inset: 0; z-index: -1; }
@@ -244,58 +244,43 @@ p { margin: 0 0 1em; }
   transition: opacity .6s var(--ease), transform 7s ease-out;
 }
 .accordeon__fond.is-active { opacity: 1; transform: scale(1.1); }
-.volet {
-  position: relative; overflow: hidden;
-  display: flex; align-items: flex-end;
-  flex: .6 1 0; min-width: 0;
-  color: var(--ivoire); text-decoration: none;
-  border-left: 1px solid rgb(217 191 140 / .45);
-  transition: flex-grow .6s var(--ease);
+/* Colonnes pleine hauteur, nom de l'animal en étiquette en haut ; le panneau du bas est posé par-dessus */
+.accordeon__onglets { grid-area: 1 / 1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.onglet {
+  display: flex; justify-content: center; align-items: flex-start;
+  padding: .9rem 0; border: 0; border-left: 1px solid rgb(251 247 240 / .22);
+  background: rgb(20 12 12 / .25); color: var(--ivoire); cursor: pointer;
+  transition: background .3s;
 }
-.volet:first-of-type { border-left: 0; }
-/* Volet ouvert ≈ 68 % de la largeur sur téléphone, ≈ 70 % sur ordinateur */
-.volet.is-open { flex-grow: 5; }
-.volet::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: rgb(20 12 12 / .5);
-  transition: background .6s;
+.onglet:first-child { border-left: 0; }
+.onglet:hover { background: rgb(20 12 12 / .05); }
+.onglet.is-active { background: transparent; }
+.onglet__nom {
+  padding: .5rem .3rem; border-radius: 8px; max-width: 100%; overflow-wrap: anywhere;
+  background: rgb(28 26 25 / .75); border: 1px solid rgb(251 247 240 / .2);
+  font: 600 .66rem var(--sans);
+  transition: background .3s, color .3s;
 }
-.volet.is-open::before { background: linear-gradient(180deg, rgb(20 12 12 / .05) 30%, rgb(20 12 12 / .85) 100%); }
-.volet:not(.is-open):hover::before { background: rgb(94 22 33 / .45); }
-.volet__vertical {
-  position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%) rotate(180deg);
-  writing-mode: vertical-rl; white-space: nowrap;
-  font: 500 1.25rem var(--serif); letter-spacing: .05em;
-  transition: opacity .3s;
+.onglet.is-active .onglet__nom { background: var(--ivoire); color: var(--charbon); }
+.onglet:focus-visible { outline-offset: -4px; }
+
+.accordeon__panneau {
+  grid-area: 1 / 1; align-self: end; position: relative;
+  padding: 1.5rem 1.25rem 1.75rem;
+  background: rgb(28 26 25 / .82); backdrop-filter: blur(6px);
 }
-.volet.is-open .volet__vertical { opacity: 0; }
-.volet__contenu {
-  display: grid; justify-items: start; gap: .5rem;
-  width: min(440px, 60vw); flex: none;
-  padding: 1.5rem 1.1rem;
-  opacity: 0; transform: translateY(16px);
-  transition: opacity .4s, transform .6s var(--ease);
-  pointer-events: none;
-}
-/* --rx / --ry : inclinaison 3D suivant la souris (animations.js, ordinateur uniquement) */
-.volet.is-open .volet__contenu {
-  opacity: 1; pointer-events: auto; transition-delay: .25s, 0s;
-  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-}
-.volet__nom { font: 500 clamp(2rem, 7vw, 4.2rem)/1 var(--serif); }
-.volet__accroche { font: italic 500 clamp(.95rem, 2.5vw, 1.15rem)/1.4 var(--serif); color: var(--creme); }
-.volet .btn { margin-top: .5rem; padding: .7rem 1.1rem; font-size: .85rem; }
-.volet:focus-visible { outline-offset: -4px; }
+.accordeon__texte { display: grid; justify-items: start; gap: .6rem; animation: panneau .5s var(--ease); }
+@keyframes panneau { from { opacity: 0; transform: translateY(10px); } }
+.accordeon__nom { margin: 0; color: var(--ivoire); font-size: clamp(1.8rem, 5vw, 2.6rem); }
+.accordeon__accroche { margin: 0 0 .4rem; max-width: 36rem; color: var(--creme); }
 
 @media (min-width: 768px) {
-  .accordeon { height: 70vh; min-height: 460px; }
-  .volet { flex-basis: 0; flex-shrink: 1; flex-grow: .75; }
-  /* 7 / (7 + 4 × 0,75) = 70 % */
-  .volet.is-open { flex-grow: 7; }
-  .volet__vertical { font-size: 1.9rem; bottom: 2rem; }
-  .volet__contenu { padding: 3rem; }
-  .volet .btn { padding: .95rem 1.7rem; font-size: .95rem; }
+  .accordeon { height: 70vh; min-height: 560px; }
+  .onglet { padding-top: 1.5rem; }
+  .onglet__nom { padding: .7rem 1.4rem; font-size: 1rem; }
+  .accordeon__panneau { padding: 2.25rem 2.5rem 2.5rem; }
 }
+@media (prefers-reduced-motion: reduce) { .accordeon__texte { animation: none; } }
 
 /* ---------- Pages animaux : hero ---------- */
 .hero--animal { min-height: 72svh; }
