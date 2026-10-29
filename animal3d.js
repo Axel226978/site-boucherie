@@ -38,6 +38,9 @@ if (modele && vue) {
           <span class="vue3d__nom" aria-hidden="true">${esc(morceauParId[id].nom)}</span>
         </button>`).join("")}`;
     scene.prepend(mv);
+    // Téléphone : les noms sont trop serrés sur la bête, ils passent en étiquettes sous la scène (CSS)
+    scene.insertAdjacentHTML("beforeend", `<div class="vue3d__liste">${Object.keys(modele.points).map((id) =>
+      `<button type="button" data-id="${esc(id)}">${esc(morceauParId[id].nom)}</button>`).join("")}</div>`);
 
     // La barre de chargement suit la progression, puis s'efface
     const barre = mv.querySelector(".vue3d__chargement");
@@ -49,11 +52,45 @@ if (modele && vue) {
 
     const bouger = () => { if (reduit) mv.jumpCameraToGoal(); };
 
-    // Clic sur un point : la caméra se tourne vers le morceau et zoome, la fiche s'ouvre à côté
-    mv.addEventListener("click", (e) => {
-      const point = e.target.closest(".vue3d__point");
-      if (!point) return;
-      const [p, [nx, ny, nz]] = modele.points[point.dataset.id];
+    // Noms des morceaux : chacun prend la première place libre autour de son point (droite, gauche, haut, bas)
+    const PLACES = ["droite", "gauche", "haut", "bas"];
+    const chevauche = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+    const placerNoms = () => {
+      const points = [...mv.querySelectorAll(".vue3d__point[data-visible]")];
+      const occupes = points.map((p) => p.getBoundingClientRect());
+      for (const p of points) {
+        const nom = p.querySelector(".vue3d__nom");
+        const libre = PLACES.find((place) => {
+          nom.dataset.place = place;
+          const r = nom.getBoundingClientRect();
+          return !occupes.some((o) => chevauche(r, o));
+        });
+        if (!libre) nom.dataset.place = "droite";
+        occupes.push(nom.getBoundingClientRect());
+      }
+    };
+    // Recalculé quand la caméra bouge, au plus toutes les 150 ms (pendant la rotation automatique)
+    let dernierPlacement = 0;
+    mv.addEventListener("camera-change", () => {
+      const t = performance.now();
+      if (t - dernierPlacement > 150) { dernierPlacement = t; requestAnimationFrame(placerNoms); }
+    });
+    mv.addEventListener("load", () => setTimeout(placerNoms, 100));
+
+    // Zones du modèle : une matière par morceau, nommée par son id (images/3d/*.glb)
+    const BORDEAUX = [0.42, 0.06, 0.09, 1], SURVOL = [0.55, 0.2, 0.2, 1];
+    let actif = null, survole = null;
+    const tonsDepart = new Map();
+    mv.addEventListener("load", () => mv.model.materials.forEach((m) => tonsDepart.set(m.name, [...m.pbrMetallicRoughness.baseColorFactor])));
+    const colorer = () => mv.model?.materials.forEach((m) => {
+      const id = m.name;
+      const teinte = actif === "entier" || id === actif ? BORDEAUX : id === survole ? SURVOL : tonsDepart.get(id);
+      if (teinte) m.pbrMetallicRoughness.setBaseColorFactor(teinte);
+    });
+
+    // Choix d'un morceau : sa zone passe en bordeaux, la caméra se tourne vers lui et zoome, la fiche s'ouvre
+    const choisir = (id) => {
+      const [p, [nx, ny, nz]] = modele.points[id];
       const theta = Math.atan2(nx, nz) * 180 / Math.PI;
       const phi = Math.min(95, Math.max(45, Math.acos(Math.max(-1, Math.min(1, ny))) * 180 / Math.PI));
       mv.autoRotate = false;
@@ -61,12 +98,46 @@ if (modele && vue) {
       mv.cameraOrbit = `${theta}deg ${phi}deg 55%`;
       mv.fieldOfView = "24deg";
       bouger();
-      mv.querySelectorAll(".vue3d__point").forEach((b) => b.classList.toggle("is-actif", b === point));
-      ouvrirFiche(morceauParId[point.dataset.id]);
+      actif = id; colorer();
+      mv.querySelectorAll(".vue3d__point").forEach((b) => b.classList.toggle("is-actif", b.dataset.id === id));
+      scene.querySelectorAll(".vue3d__liste button").forEach((b) => b.classList.toggle("is-actif", b.dataset.id === id));
+      ouvrirFiche(morceauParId[id]);
       ensemble.hidden = false;
       // Téléphone : la fiche est sous la scène, on l'amène à l'écran
       if (matchMedia("(max-width: 899px)").matches) fiche.scrollIntoView({ behavior: reduit ? "auto" : "smooth", block: "nearest" });
+    };
+
+    // Clic sur un point ou directement sur une zone de l'animal (mais pas à la fin d'une rotation à la souris)
+    scene.querySelector(".vue3d__liste").addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (b) choisir(b.dataset.id);
     });
+    let depart = null;
+    mv.addEventListener("pointerdown", (e) => { depart = [e.clientX, e.clientY]; });
+    mv.addEventListener("click", (e) => {
+      const point = e.target.closest(".vue3d__point");
+      if (point) return choisir(point.dataset.id);
+      if (depart && Math.hypot(e.clientX - depart[0], e.clientY - depart[1]) > 5) return;
+      const zone = mv.materialFromPoint(e.clientX, e.clientY)?.name;
+      if (modele.points[zone]) choisir(zone);
+    });
+
+    // Souris : la zone survolée s'éclaire
+    if (matchMedia("(hover: hover)").matches) {
+      let attente = false;
+      mv.addEventListener("pointermove", (e) => {
+        if (attente || e.buttons) return;
+        attente = true;
+        requestAnimationFrame(() => {
+          attente = false;
+          const zone = mv.materialFromPoint(e.clientX, e.clientY)?.name;
+          const nouvelle = modele.points[zone] ? zone : null;
+          mv.style.cursor = nouvelle ? "pointer" : "";
+          if (nouvelle !== survole) { survole = nouvelle; colorer(); }
+        });
+      });
+      mv.addEventListener("pointerleave", () => { survole = null; colorer(); });
+    }
 
     ensemble.addEventListener("click", () => {
       mv.cameraTarget = "auto auto auto";
@@ -74,7 +145,9 @@ if (modele && vue) {
       mv.fieldOfView = "auto";
       mv.autoRotate = !reduit;
       bouger();
+      actif = null; colorer();
       mv.querySelectorAll(".vue3d__point").forEach((b) => b.classList.remove("is-actif"));
+      scene.querySelectorAll(".vue3d__liste button").forEach((b) => b.classList.remove("is-actif"));
       fiche.innerHTML = aideInitiale;
       ensemble.hidden = true;
     });

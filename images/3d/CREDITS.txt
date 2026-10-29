@@ -5,7 +5,7 @@ porc.glb
   Modèle : « Pig » par Quaternius
   Source : https://poly.pizza/m/TNvG3QUFlp (pack d'animaux de ferme Quaternius, quaternius.com)
   Licence : CC0 1.0, domaine public (aucune attribution obligatoire)
-  Modifié : animations et squelette retirés, matière unique crème rosée mate,
+  Modifié : animations et squelette retirés, découpé en zones (une matière crème rosée par morceau),
             géométrie quantifiée avec glTF-Transform (28 Ko).
 
 boeuf.glb
@@ -28,5 +28,5 @@ volaille.glb
   Source : https://poly.pizza/m/8Unya0rw9tR
   Licence : CC BY 3.0 (attribution obligatoire : mention dans le pied de page de volaille.html)
 
-Tous : animations, squelette et textures retirés, matière unique crème rosée mate,
+Tous : animations, squelette et textures retirés, découpés en zones (une matière par morceau, trois tons crème rosé),
 géométrie quantifiée avec glTF-Transform.
