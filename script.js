@@ -61,10 +61,14 @@ $("#annee").textContent = new Date().getFullYear();
 /* ---------- Apparition douce au scroll ---------- */
 // Lancé après tous les scripts, pour inclure le contenu généré par pages.js / animal.js
 addEventListener("DOMContentLoaded", () => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Déclenché dès que le haut de l'élément atteint 90 % de la hauteur de l'écran
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add("is-visible"); observer.unobserve(e.target); }
     });
-  }, { threshold: 0.12 });
+  }, { rootMargin: "0px 0px -10% 0px" });
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  // Le CSS ne masque les .reveal qu'à partir d'ici : si un script plante avant, tout reste visible
+  document.documentElement.classList.add("reveal-actif");
 });

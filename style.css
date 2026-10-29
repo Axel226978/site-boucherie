@@ -97,21 +97,30 @@ p { margin: 0 0 1em; }
   position: fixed; inset: 0 0 auto; z-index: 50;
   height: var(--header-h);
   color: var(--ivoire);
-  border-bottom: 1px solid transparent;
+  /* Fond sombre opaque partout : le logo reste lisible sur les sections claires */
+  background: var(--charbon); border-bottom: 1px solid rgb(184 148 90 / .35);
   transition: background .4s, border-color .4s;
 }
-.header.is-scrolled, .header.is-open {
-  background: rgb(28 26 25 / .9); border-bottom-color: rgb(184 148 90 / .35);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-}
+/* Accueil : transparent seulement tout en haut, sur la photo du hero */
+.header--transparent:not(.is-scrolled):not(.is-open) { background: transparent; border-bottom-color: transparent; }
 .header__inner {
   height: 100%;
   width: min(1280px, 100% - 2.5rem); margin-inline: auto;
   display: flex; align-items: center; gap: 1rem;
 }
 .logo {
+  display: grid; grid-template-columns: 46px auto; column-gap: .75rem; align-items: center; white-space: nowrap;
   font-family: var(--serif); font-size: 1.4rem; text-decoration: none; line-height: 1;
   margin: 0 auto 0 0;
+}
+.logo__sceau { grid-row: span 2; width: 46px; height: 46px; }
+.footer .logo { grid-template-columns: 72px auto; }
+.footer .logo__sceau { width: 72px; height: 72px; }
+/* Petit téléphone : logo un peu plus petit, sous-titre masqué (il est déjà écrit sur le logo) */
+@media (max-width: 420px) {
+  .header .logo { grid-template-columns: 40px auto; column-gap: .6rem; font-size: 1.2rem; }
+  .header .logo__sceau { width: 40px; height: 40px; }
+  .header .logo span { display: none; }
 }
 .logo span {
   display: block; font-family: var(--sans); font-size: .62rem; letter-spacing: .25em;
@@ -201,6 +210,8 @@ p { margin: 0 0 1em; }
 .hero__fil { position: absolute; left: 50%; bottom: 0; width: 1px; height: 64px; overflow: hidden; background: rgb(217 191 140 / .25); }
 .hero__fil::after { content: ""; position: absolute; inset: 0; background: var(--dore-clair); animation: fil 2.4s var(--ease) infinite; }
 @keyframes fil { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+.hero__video { opacity: 0; transition: opacity 1s var(--ease); }
+.hero__video.is-prete { opacity: 1; }
 /* Ken Burns : `scale` (et non transform) pour se cumuler avec la parallaxe posée par GSAP */
 @keyframes kenburns { from { scale: 1.04; } to { scale: 1.18; } }
 .hero h1 .mot { display: inline-block; white-space: nowrap; }
@@ -349,10 +360,13 @@ p { margin: 0 0 1em; }
 .autres__titre { font-size: 1.6rem; text-align: center; }
 .autres { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
 .autre { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius); color: var(--ivoire); text-decoration: none; isolation: isolate; }
-.autre img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .8s var(--ease); }
+.autre img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.6s var(--ease); }
 .autre::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 30%, rgb(20 12 12 / .8)); }
 .autre span { position: absolute; left: 1rem; bottom: .8rem; font: 500 1.6rem var(--serif); }
-.autre:hover img { transform: scale(1.08); }
+.autre:hover img { transform: scale(1.06); }
+/* Liseré doré intérieur au survol (l'outline se dessine par-dessus la photo) */
+.autre { outline: 1px solid transparent; outline-offset: -10px; transition: outline-color .5s var(--ease), outline-offset .5s var(--ease); }
+.autre:hover, .autre:focus-visible { outline-color: var(--dore-clair); outline-offset: -12px; }
 /* Accueil : 4 raccourcis vers les pages, en 2 × 2 puis en ligne */
 .raccourcis .autres { grid-template-columns: repeat(2, 1fr); }
 .raccourcis .autre span { font-size: clamp(1.15rem, 5vw, 1.6rem); }
@@ -573,11 +587,29 @@ html.lenis { scroll-behavior: auto; } /* Lenis lisse déjà : un second lissage 
   .header { view-transition-name: entete; }
 }
 
+/* ---------- Intro de première visite (accueil) ---------- */
+.intro { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; background: var(--charbon); transition: opacity .6s var(--ease), visibility .6s; }
+.intro[hidden] { display: none; }
+.intro.is-fini { opacity: 0; visibility: hidden; }
+.intro__logo { position: relative; width: min(220px, 55vw); aspect-ratio: 1; }
+.intro__logo svg { position: absolute; inset: -9%; width: 118%; height: 118%; }
+/* pathLength="1" : le tracé complet vaut 1, il suffit d'animer le décalage de 1 à 0 */
+.intro__logo .trait { fill: none; stroke: var(--dore); stroke-dasharray: 1; stroke-dashoffset: 1; animation: trace .8s var(--ease) forwards; }
+.intro__logo img { width: 100%; height: auto; opacity: 0; scale: .92; animation: apparait .6s .35s var(--ease) forwards; }
+@keyframes trace { to { stroke-dashoffset: 0; } }
+@keyframes apparait { to { opacity: 1; scale: 1; } }
+.intro__passer {
+  position: absolute; right: 1.25rem; bottom: 1.25rem; cursor: pointer;
+  background: none; border: 1px solid rgb(217 191 140 / .5); color: var(--dore-clair);
+  font: 600 .68rem var(--sans); letter-spacing: .16em; text-transform: uppercase; padding: .7rem 1.1rem;
+}
+
 /* ---------- Apparition au scroll ---------- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* Masqué seulement quand script.js a démarré l'observateur (classe reveal-actif) */
+.reveal { transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.reveal-actif .reveal:not(.is-visible) { opacity: 0; transform: translateY(20px); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal-actif .reveal:not(.is-visible) { opacity: 1; transform: none; }
 }

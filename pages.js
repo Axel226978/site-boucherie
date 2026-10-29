@@ -48,6 +48,18 @@ if (accordeon) {
   }, { passive: true });
 }
 
+/* ---------- Hero de l'accueil : vidéo en boucle ---------- */
+// Pas de vidéo si les animations sont réduites, ni sur téléphone avec une connexion lente : la photo reste
+const video = $(".hero__video");
+const connexion = navigator.connection;
+const connexionLente = connexion && (connexion.saveData || /2g|3g/.test(connexion.effectiveType));
+if (video && !matchMedia("(prefers-reduced-motion: reduce)").matches && !(connexionLente && matchMedia("(max-width: 899px)").matches)) {
+  video.src = video.dataset.src;
+  video.addEventListener("playing", () => video.classList.add("is-prete"), { once: true });
+  // En pause hors de l'écran pour ménager la batterie ; play() refusé (mode économie…) : la photo reste
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) video.play().catch(() => {}); else video.pause(); }).observe(video);
+}
+
 /* ---------- Plat du jour ---------- */
 if ($("#plat")) {
   const plat = SITE.platDuJour;
@@ -69,7 +81,7 @@ if ($("#plat")) {
 /* ---------- Spécialités : carte qui se retourne (photo au recto, produits au verso) ---------- */
 if ($("#cards")) {
   $("#cards").innerHTML = SITE.specialites.map((s, i) => `
-    <article class="card reveal" style="transition-delay:${(i % 3) * 0.1}s" tabindex="0">
+    <article class="card reveal" style="transition-delay:${(i % 3) * 0.06}s" tabindex="0">
       <div class="card__inner">
         <div class="card__face card__recto">
           <div class="card__img"><img src="${esc(s.image)}" alt="${esc(s.titre)}" width="800" height="600" loading="lazy"></div>
@@ -90,7 +102,7 @@ if ($("#cards")) {
 /* ---------- Notre équipe ---------- */
 if ($("#equipe-liste")) {
   $("#equipe-liste").innerHTML = SITE.equipe.map((m, i) => `
-    <article class="membre reveal" style="transition-delay:${i * 0.1}s">
+    <article class="membre reveal" style="transition-delay:${i * 0.06}s">
       <img src="${esc(m.image)}" alt="Portrait de ${esc(m.prenom)} Paul" width="600" height="750" loading="lazy">
       <h3>${esc(m.prenom)}</h3>
       <a href="tel:${esc(m.telephoneLien)}">${esc(m.telephone)}</a>
@@ -100,7 +112,7 @@ if ($("#equipe-liste")) {
 /* ---------- Commandes ---------- */
 if ($("#commandes-liste")) {
   $("#commandes-liste").innerHTML = SITE.commandes.map((c, i) => `
-    <li class="commande reveal" style="transition-delay:${(i % 3) * 0.1}s">
+    <li class="commande reveal" style="transition-delay:${(i % 3) * 0.06}s">
       <div class="commande__img"><img src="${esc(c.image)}" alt="" width="800" height="600" loading="lazy"></div>
       <div class="commande__corps"><h3>${esc(c.titre)}</h3><p>${esc(c.texte)}</p></div>
     </li>`).join("");

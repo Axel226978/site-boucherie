@@ -104,3 +104,6 @@ commandes/fin-annee.jpg    Jed Owen                  https://unsplash.com/photos
 
 Les portraits de l'équipe (equipe-*.jpg) restent des images de remplacement neutres :
 ils doivent montrer les vrais Sébastien, Olivier et Benjamin, pas des inconnus.
+
+Vidéo du hero (images/hero.mp4) : Pexels, vidéo n° 8477208 « Chef slicing meat »,
+https://www.pexels.com/video/chef-slicing-meat-8477208/ (licence Pexels, attribution non obligatoire).

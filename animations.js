@@ -23,9 +23,14 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap && wi
       `<span class="mot" aria-hidden="true">${[...mot].map((l) => `<span class="lettre">${esc(l)}</span>`).join("")}</span>`).join("");
     return n.nodeName === "EM" ? `<em>${mots}</em>` : mots;
   }).join("");
-  gsap.timeline({ defaults: { ease: "power3.out" } })
-    .from(".hero h1 .lettre", { opacity: 0, yPercent: 60, rotate: 6, duration: .8, stagger: .035 })
-    .from(".hero__sub, .hero__actions, .hero__infos", { opacity: 0, y: 20, duration: .8, stagger: .15 }, "-=.4");
+  const entree = gsap.timeline({ defaults: { ease: "power3.out" } })
+    .from(".hero h1 .lettre", { opacity: 0, yPercent: 60, rotate: 6, duration: .5, stagger: .02 })
+    .from(".hero__sub, .hero__actions, .hero__infos", { opacity: 0, y: 20, duration: .5, stagger: .1 }, "-=.3");
+  // Pendant l'intro de première visite, le titre attend qu'elle se termine
+  if ($("#intro:not([hidden]):not(.is-fini)")) {
+    entree.pause();
+    document.addEventListener("intro-fin", () => entree.play(), { once: true });
+  }
 
   // Parallaxe : la photo descend plus lentement que le texte
   const hero = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };

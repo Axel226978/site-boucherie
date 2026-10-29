@@ -38,15 +38,43 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/hero.jpg">
+  <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
+  <!-- Intro à la première visite : un cercle doré se trace, le logo apparaît, puis le site (jamais si les animations sont réduites) -->
+  <div class="intro" id="intro" hidden>
+    <div class="intro__logo">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trait" cx="60" cy="60" r="58" stroke-width="1" pathLength="1" transform="rotate(-90 60 60)"/></svg>
+      <img src="images/logo.png" alt="" width="248" height="248">
+    </div>
+    <button class="intro__passer" type="button">Passer</button>
+  </div>
+  <script>
+    // Inline : décidé avant le premier affichage, pour ne jamais montrer le site puis l'intro
+    (() => {
+      let dejaVue = true;
+      try { dejaVue = localStorage.getItem("intro-vue"); localStorage.setItem("intro-vue", "1"); } catch {}
+      if (dejaVue || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const intro = document.getElementById("intro");
+      intro.hidden = false;
+      const fermer = () => {
+        if (intro.classList.contains("is-fini")) return;
+        intro.classList.add("is-fini");
+        document.dispatchEvent(new Event("intro-fin"));
+        setTimeout(() => intro.remove(), 600);
+      };
+      intro.querySelector("button").addEventListener("click", fermer);
+      setTimeout(fermer, 1500);
+    })();
+  </script>
+
   <!-- En-tête -->
-  <header class="header" id="header">
+  <header class="header header--transparent" id="header">
     <div class="header__inner">
-      <a href="index.html" class="logo">Frères Paul<span>Boucherie · Ciney</span></a>
+      <a href="index.html" class="logo"><img class="logo__sceau" src="images/logo.png" alt="" width="46" height="46">Frères Paul<span>Boucherie · Ciney</span></a>
 
       <nav class="nav" id="nav" aria-label="Navigation principale">
         <ul>
@@ -79,6 +107,8 @@
     <!-- Hero -->
     <section class="hero" id="accueil">
       <img class="hero__img" src="images/hero.jpg" alt="" width="1920" height="1080">
+      <!-- Vidéo chargée par pages.js seulement si les conditions le permettent ; la photo reste dessous en secours -->
+      <video class="hero__img hero__video" data-src="images/hero.mp4" poster="images/hero.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <div class="hero__content">
         <p class="conges" id="conges" role="status" hidden></p>
         <h1>Boucherie des Frères <em>Paul</em></h1>
@@ -112,9 +142,9 @@
     <section class="chiffres" aria-label="La boucherie en chiffres">
       <ul class="container chiffres__liste">
         <li class="reveal"><strong><span data-compteur>20</span>+</strong> ans de métier</li>
-        <li class="reveal" style="transition-delay:.1s"><strong><span data-compteur>3</span></strong> frères</li>
-        <li class="reveal" style="transition-delay:.2s"><strong><span data-compteur id="note-chiffre">4,7</span>★</strong> sur Google</li>
-        <li class="reveal" style="transition-delay:.3s"><strong><span data-compteur>22</span></strong> places de parking gratuites</li>
+        <li class="reveal" style="transition-delay:.06s"><strong><span data-compteur>3</span></strong> frères</li>
+        <li class="reveal" style="transition-delay:.12s"><strong><span data-compteur id="note-chiffre">4,7</span>★</strong> sur Google</li>
+        <li class="reveal" style="transition-delay:.18s"><strong><span data-compteur>22</span></strong> places de parking gratuites</li>
       </ul>
     </section>
 
@@ -148,7 +178,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>
-        <p class="logo">Frères Paul<span>Boucherie · Ciney</span></p>
+        <p class="logo"><img class="logo__sceau" src="images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Boucherie · Ciney</span></p>
         <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
       </div>
       <div>
