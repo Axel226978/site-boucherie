@@ -2,7 +2,7 @@
    Boucherie des Frères Paul — code commun à toutes les pages
    (en-tête, horaires du pied de page, apparition au scroll).
    Chargé après data.js et avant le script propre à la page
-   (accueil.js ou animal.js).
+   (pages.js ou animal.js).
    ========================================================= */
 
 const $ = (sel) => document.querySelector(sel);
@@ -59,7 +59,7 @@ $("#footer-horaires").innerHTML = groupes.map((g) =>
 $("#annee").textContent = new Date().getFullYear();
 
 /* ---------- Apparition douce au scroll ---------- */
-// Lancé après tous les scripts, pour inclure le contenu généré par accueil.js / animal.js
+// Lancé après tous les scripts, pour inclure le contenu généré par pages.js / animal.js
 addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e) => {

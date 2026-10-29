@@ -107,6 +107,7 @@ p { margin: 0 0 1em; }
 }
 .nav ul { list-style: none; margin: 0; padding: 0; }
 .nav a { text-decoration: none; position: relative; }
+.nav a[aria-current="page"] { color: var(--dore-clair); }
 
 /* Menu mobile */
 .burger {
@@ -171,7 +172,7 @@ p { margin: 0 0 1em; }
   display: grid; place-items: center; text-align: center;
   color: var(--ivoire); overflow: hidden; isolation: isolate;
 }
-.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; animation: zoom 12s var(--ease) both; }
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; animation: kenburns 30s ease-in-out infinite alternate; }
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, rgb(20 12 12 / .55), rgb(20 12 12 / .75));
@@ -181,7 +182,10 @@ p { margin: 0 0 1em; }
 .hero h1 { font-size: clamp(2.8rem, 10vw, 6.5rem); font-weight: 500; margin-bottom: .25em; }
 .hero__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 3vw, 1.6rem); color: var(--creme); }
 .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
-@keyframes zoom { from { transform: scale(1.08); } }
+/* Ken Burns : `scale` (et non transform) pour se cumuler avec la parallaxe posée par GSAP */
+@keyframes kenburns { from { scale: 1.04; } to { scale: 1.18; } }
+.hero h1 .mot { display: inline-block; white-space: nowrap; }
+.hero h1 .lettre { display: inline-block; }
 
 /* ---------- Notre maison ---------- */
 .maison__grid { display: grid; gap: 3rem; align-items: center; }
@@ -243,7 +247,11 @@ p { margin: 0 0 1em; }
   transition: opacity .4s, transform .6s var(--ease);
   pointer-events: none;
 }
-.volet.is-open .volet__contenu { opacity: 1; transform: none; transition-delay: .25s; pointer-events: auto; }
+/* --rx / --ry : inclinaison 3D suivant la souris (animations.js, ordinateur uniquement) */
+.volet.is-open .volet__contenu {
+  opacity: 1; pointer-events: auto; transition-delay: .25s, 0s;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
 .volet__nom { font: 500 clamp(2rem, 7vw, 4.2rem)/1 var(--serif); }
 .volet__accroche { font: italic 500 clamp(.95rem, 2.5vw, 1.15rem)/1.4 var(--serif); color: var(--creme); }
 .volet .btn { margin-top: .5rem; padding: .7rem 1.1rem; font-size: .85rem; }
@@ -326,6 +334,10 @@ p { margin: 0 0 1em; }
 .autre::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 30%, rgb(20 12 12 / .8)); }
 .autre span { position: absolute; left: 1rem; bottom: .8rem; font: 500 1.6rem var(--serif); }
 .autre:hover img { transform: scale(1.08); }
+/* Accueil : 4 raccourcis vers les pages, en 2 × 2 puis en ligne */
+.raccourcis .autres { grid-template-columns: repeat(2, 1fr); }
+.raccourcis .autre span { font-size: clamp(1.15rem, 5vw, 1.6rem); }
+@media (min-width: 900px) { .raccourcis .autres { grid-template-columns: repeat(4, 1fr); } }
 
 /* ---------- Plat du jour ---------- */
 .plat__card {
@@ -345,11 +357,20 @@ p { margin: 0 0 1em; }
 /* ---------- Spécialités ---------- */
 .specialites { background: var(--creme); }
 .cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
-.card {
-  background: var(--ivoire); border-radius: var(--radius); overflow: hidden;
-  transition: transform .4s var(--ease), box-shadow .4s;
+/* Carte retournée : les deux faces partagent la même cellule, la carte prend la hauteur de la plus grande */
+.card { perspective: 1200px; cursor: pointer; outline-offset: 4px; }
+.card__inner { display: grid; height: 100%; transform-style: preserve-3d; transition: transform .8s var(--ease); }
+.card__face {
+  grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: var(--radius); overflow: hidden; background: var(--ivoire);
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgb(28 26 25 / .35); }
+.card__recto { display: flex; flex-direction: column; }
+.card__recto .card__img { flex: 1 0 auto; } /* part du 4:3 puis grandit si le verso est plus haut */
+.card__verso { transform: rotateY(180deg); padding: 1.5rem; background: var(--bordeaux); color: var(--ivoire); }
+.card .card__verso p { color: var(--creme); }
+.card .card__verso-titre { font: 500 1.35rem var(--serif); color: var(--dore-clair); margin-bottom: 0; }
+.card.is-flipped .card__inner, .card:focus-visible .card__inner { transform: rotateY(180deg); }
+@media (hover: hover) { .card:hover .card__inner { transform: rotateY(180deg); } }
 .card__img { overflow: hidden; aspect-ratio: 4 / 3; }
 .card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
 .card:hover .card__img img { transform: scale(1.06); }
@@ -358,7 +379,7 @@ p { margin: 0 0 1em; }
 .card p { color: var(--charbon-doux); font-size: .95rem; margin: 0; }
 
 .card__produits { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .35rem; }
-.card__produits li { font-size: .8rem; padding: .15rem .65rem; border: 1px solid rgb(94 22 33 / .25); border-radius: 999px; color: var(--bordeaux); }
+.card__produits li { font-size: .8rem; padding: .15rem .65rem; border: 1px solid rgb(217 191 140 / .5); border-radius: 999px; color: var(--ivoire); }
 
 /* ---------- Équipe ---------- */
 .equipe__grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
@@ -468,11 +489,19 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 1.5rem; }
 .bandeau__texte { margin: 0; font: italic 500 clamp(1.8rem, 6vw, 3.6rem)/1.2 var(--serif); color: var(--ivoire); }
 .bandeau__texte span { color: var(--dore); }
 
-/* ---------- Galerie ---------- */
-.galerie { background: var(--creme); }
-.galerie__grid { display: grid; gap: .75rem; grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 900px) { .galerie__grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
-.galerie__item { margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; }
+/* ---------- Galerie : carrousel tactile, défilement horizontal épinglé sur ordinateur (animations.js) ---------- */
+.galerie { background: var(--creme); overflow-x: clip; }
+.galerie__grid {
+  display: flex; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.galerie__grid::-webkit-scrollbar { display: none; }
+.galerie__item { flex: 0 0 82%; scroll-snap-align: center; margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; }
+@media (min-width: 900px) {
+  .galerie__grid { gap: 1rem; }
+  .galerie__item { flex-basis: min(44vw, 620px); }
+  .galerie__grid.is-epingle { overflow: visible; }
+}
 .galerie__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
 .galerie__item:hover img { transform: scale(1.06); }
 
@@ -490,6 +519,39 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 1.5rem; }
 .footer__liste { list-style: none; padding: 0; margin: 0; line-height: 2; }
 .footer__bas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgb(246 239 227 / .12); color: rgb(246 239 227 / .7); }
 .footer__bas p { margin: 0; }
+
+/* ---------- Chiffres clés ---------- */
+.chiffres { background: var(--bordeaux); color: var(--creme); padding: 3rem 0; }
+.chiffres__liste { list-style: none; padding: 0; margin-block: 0; display: grid; gap: 2rem 1rem; grid-template-columns: repeat(2, 1fr); text-align: center; }
+@media (min-width: 800px) { .chiffres__liste { grid-template-columns: repeat(4, 1fr); } }
+.chiffres strong { display: block; font: 500 clamp(2.4rem, 7vw, 3.6rem)/1.1 var(--serif); color: var(--ivoire); font-variant-numeric: tabular-nums; }
+.chiffres li { font-size: .95rem; }
+
+/* ---------- Bandeau défilant ---------- */
+.defilant { overflow: hidden; background: var(--charbon); color: var(--dore-clair); padding: 1.1rem 0; }
+.defilant__piste { display: flex; width: max-content; margin: 0; font: italic 500 clamp(1.5rem, 4vw, 2.4rem) var(--serif); white-space: pre; animation: defile 40s linear infinite; }
+@keyframes defile { to { transform: translateX(-50%); } }
+
+/* ---------- Badge tournant (La maison) ---------- */
+.badge { position: absolute; z-index: 1; width: clamp(96px, 14vw, 132px); top: -2.2rem; left: -1.6rem; animation: tourne 22s linear infinite; }
+.badge circle { fill: var(--ivoire); stroke: var(--dore); }
+.badge path { fill: none; }
+.badge text { font: 600 9.5px var(--sans); letter-spacing: .12em; text-transform: uppercase; fill: var(--bordeaux); }
+@keyframes tourne { to { rotate: 360deg; } }
+
+/* ---------- Neige (Boudin de Noël, 1er déc. – 6 janv.) ---------- */
+.neige { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* ---------- Lenis (scroll fluide) ---------- */
+html.lenis, html.lenis body { height: auto; }
+html.lenis { scroll-behavior: auto; } /* Lenis lisse déjà : un second lissage CSS ferait saccader */
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ---------- Transition entre pages (navigateurs compatibles) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .header { view-transition-name: entete; }
+}
 
 /* ---------- Apparition au scroll ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
