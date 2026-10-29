@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vlees | Boucherie des Frères Paul, Ciney</title>
+  <meta name="description" content="Varken, rund, kalf, lam en gevogelte in Ciney. Elk stuk, hoe u het bereidt en een receptidee.">
+  <meta name="theme-color" content="#5e1621">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_BE">
+  <meta property="og:title" content="Vlees | Boucherie des Frères Paul">
+  <meta property="og:description" content="Varken, rund, kalf, lam en gevogelte in Ciney. Elk stuk, hoe u het bereidt en een receptidee.">
+  <meta property="og:image" content="https://site-boucherie.vercel.app/images/galerie-produits.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../images/galerie-produits.jpg">
+  <link rel="alternate" hreflang="fr" href="https://site-boucherie.vercel.app/viandes.html">
+  <link rel="alternate" hreflang="nl" href="https://site-boucherie.vercel.app/nl/viandes.html">
+  <link rel="alternate" hreflang="en" href="https://site-boucherie.vercel.app/en/viandes.html">
+  <link rel="alternate" hreflang="x-default" href="https://site-boucherie.vercel.app/viandes.html">
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Naar de inhoud</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="46" height="46">Frères Paul<span>Slagerij · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html" aria-current="page">Vlees</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Varken</a></li>
+              <li><a href="boeuf.html">Rund</a></li>
+              <li><a href="veau.html">Kalf</a></li>
+              <li><a href="agneau.html">Lam</a></li>
+              <li><a href="volaille.html">Gevogelte</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">Over ons</a></li>
+          <li><a href="specialites.html">Specialiteiten</a></li>
+          <li><a href="commandes.html">Bestellingen</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="langues"><a href="../viandes.html" hreflang="fr" lang="fr" aria-label="Français">FR</a><span aria-current="true" title="Nederlands">NL</span><a href="../en/viandes.html" hreflang="en" lang="en" aria-label="English">EN</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Bellen</a>
+      <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero hero--animal">
+      <img class="hero__img" src="../images/galerie-produits.jpg" alt="" width="1600" height="1067">
+      <div class="hero__content">
+        <p class="eyebrow">Aan de toonbank</p>
+        <h1>Ons <em>vlees</em></h1>
+        <p class="hero__sub">Varken, rund, kalf, lam en gevogelte, Rue du Commerce</p>
+      </div>
+    </section>
+
+    <!-- Nos viandes: accordéon d'animaux, chaque volet mène à sa page -->
+    <section class="viandes" id="viandes" aria-labelledby="viandes-titre">
+      <div class="container section__head reveal">
+        <p class="eyebrow">Kiezen</p>
+        <h2 id="viandes-titre">Welk vlees <em>vandaag</em>?</h2>
+        <p>Kies een dier. We tonen u elk stuk, hoe u het bereidt en een recept om te proberen.</p>
+      </div>
+      <nav class="accordeon reveal" id="accordeon" aria-label="Vlees per dier"></nav>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Slagerij · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Openingsuren</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Links</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Vlees</a></li>
+          <li><a href="la-maison.html">Over ons</a></li>
+          <li><a href="specialites.html">Specialiteiten</a></li>
+          <li><a href="commandes.html">Bestellingen</a></li>
+          <li><a href="contact.html">Contact en route</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Wettelijke vermeldingen</a> · <a href="confidentialite.html">Privacybeleid</a></p>
+      <p>Website gemaakt door Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="../data.js"></script>
+  <script src="data.js"></script>
+  <script src="../script.js"></script>
+  <script src="../pages.js"></script>
+  <!-- Animations: chargées en différé, le site reste complet si elles ne chargent pas -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script defer src="../animations.js"></script>
+</body>
+</html>

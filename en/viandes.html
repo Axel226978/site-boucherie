@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meat | Boucherie des Frères Paul, Ciney</title>
+  <meta name="description" content="Pork, beef, veal, lamb and poultry in Ciney. Every cut, how to cook it and a recipe idea.">
+  <meta name="theme-color" content="#5e1621">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Meat | Boucherie des Frères Paul">
+  <meta property="og:description" content="Pork, beef, veal, lamb and poultry in Ciney. Every cut, how to cook it and a recipe idea.">
+  <meta property="og:image" content="https://site-boucherie.vercel.app/images/galerie-produits.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../images/galerie-produits.jpg">
+  <link rel="alternate" hreflang="fr" href="https://site-boucherie.vercel.app/viandes.html">
+  <link rel="alternate" hreflang="nl" href="https://site-boucherie.vercel.app/nl/viandes.html">
+  <link rel="alternate" hreflang="en" href="https://site-boucherie.vercel.app/en/viandes.html">
+  <link rel="alternate" hreflang="x-default" href="https://site-boucherie.vercel.app/viandes.html">
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="46" height="46">Frères Paul<span>Butcher · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html" aria-current="page">Meat</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Pork</a></li>
+              <li><a href="boeuf.html">Beef</a></li>
+              <li><a href="veau.html">Veal</a></li>
+              <li><a href="agneau.html">Lamb</a></li>
+              <li><a href="volaille.html">Poultry</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">About us</a></li>
+          <li><a href="specialites.html">Specialities</a></li>
+          <li><a href="commandes.html">Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="langues"><a href="../viandes.html" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="../nl/viandes.html" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><span aria-current="true" title="English">EN</span></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Call</a>
+      <button class="burger" id="burger" aria-label="Open the menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero hero--animal">
+      <img class="hero__img" src="../images/galerie-produits.jpg" alt="" width="1600" height="1067">
+      <div class="hero__content">
+        <p class="eyebrow">At the counter</p>
+        <h1>Our <em>meat</em></h1>
+        <p class="hero__sub">Pork, beef, veal, lamb and poultry, Rue du Commerce</p>
+      </div>
+    </section>
+
+    <!-- Nos viandes : accordéon d'animaux, chaque volet mène à sa page -->
+    <section class="viandes" id="viandes" aria-labelledby="viandes-titre">
+      <div class="container section__head reveal">
+        <p class="eyebrow">Choose</p>
+        <h2 id="viandes-titre">Which meat <em>today</em>?</h2>
+        <p>Pick an animal. We'll show you every cut, how to cook it and a recipe to try.</p>
+      </div>
+      <nav class="accordeon reveal" id="accordeon" aria-label="Meat by animal"></nav>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Butcher · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Opening hours</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Links</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Meat</a></li>
+          <li><a href="la-maison.html">About us</a></li>
+          <li><a href="specialites.html">Specialities</a></li>
+          <li><a href="commandes.html">Orders</a></li>
+          <li><a href="contact.html">Contact and directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Legal notice</a> · <a href="confidentialite.html">Privacy policy</a></p>
+      <p>Website by Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="../data.js"></script>
+  <script src="data.js"></script>
+  <script src="../script.js"></script>
+  <script src="../pages.js"></script>
+  <!-- Animations : chargées en différé, le site reste complet si elles ne chargent pas -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script defer src="../animations.js"></script>
+</body>
+</html>

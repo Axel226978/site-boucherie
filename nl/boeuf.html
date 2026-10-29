@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rund: de stukken | Boucherie des Frères Paul, Ciney</title>
+  <meta name="description" content="Rundvlees in Ciney: côte à l'os, entrecote, filet pur, contrefilet, bavette, onglet… Elk stuk en hoe u het bereidt.">
+  <meta name="theme-color" content="#5e1621">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_BE">
+  <meta property="og:title" content="Rund | Boucherie des Frères Paul">
+  <meta property="og:description" content="Rundvlees in Ciney: côte à l'os, entrecote, filet pur, contrefilet, bavette, onglet… Elk stuk en hoe u het bereidt.">
+  <meta property="og:image" content="https://site-boucherie.vercel.app/images/animaux/boeuf.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="alternate" hreflang="fr" href="https://site-boucherie.vercel.app/boeuf.html">
+  <link rel="alternate" hreflang="nl" href="https://site-boucherie.vercel.app/nl/boeuf.html">
+  <link rel="alternate" hreflang="en" href="https://site-boucherie.vercel.app/en/boeuf.html">
+  <link rel="alternate" hreflang="x-default" href="https://site-boucherie.vercel.app/boeuf.html">
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<!-- Gabarit commun aux pages animaux: seul data-animal (et le titre/description) change -->
+<body data-animal="boeuf">
+  <a class="skip-link" href="#contenu">Naar de inhoud</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="46" height="46">Frères Paul<span>Slagerij · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html">Vlees</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Varken</a></li>
+              <li><a href="boeuf.html" aria-current="page">Rund</a></li>
+              <li><a href="veau.html">Kalf</a></li>
+              <li><a href="agneau.html">Lam</a></li>
+              <li><a href="volaille.html">Gevogelte</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">Over ons</a></li>
+          <li><a href="specialites.html">Specialiteiten</a></li>
+          <li><a href="commandes.html">Bestellingen</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="langues"><a href="../boeuf.html" hreflang="fr" lang="fr" aria-label="Français">FR</a><span aria-current="true" title="Nederlands">NL</span><a href="../en/boeuf.html" hreflang="en" lang="en" aria-label="English">EN</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Bellen</a>
+      <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero hero--animal">
+      <img class="hero__img" id="animal-photo" alt="" width="1600" height="1067">
+      <div class="hero__content">
+        <p class="eyebrow">Ons vlees</p>
+        <h1>Het <em>rund</em></h1>
+        <p class="hero__sub" id="animal-accroche"></p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#decoupe">Bekijk de stukken</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section decoupe" id="decoupe">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Het uitsnijden</p>
+          <h2>De kaart van de <em>slager</em></h2>
+          <p>Ga over een stuk om de naam te zien. Klik om de fiche te lezen.</p>
+        </div>
+        <div class="planche__dessin reveal" id="dessin"></div>
+        <!-- Bœuf en 3D (animal3d.js): remplace la planche une fois chargé ; si la 3D échoue, la planche reste -->
+        <div class="vue3d" id="vue3d" hidden>
+          <div class="vue3d__scene" id="vue3d-scene">
+            <button class="vue3d__ensemble" id="vue3d-ensemble" type="button" hidden>Overzicht</button>
+          </div>
+          <aside class="vue3d__fiche" id="vue3d-fiche" aria-live="polite">
+            <p class="eyebrow">Het rund in 3D</p>
+            <p class="vue3d__aide">Draai het rund met de muis of uw vinger. Tik op een gouden punt of een stuk om de fiche te zien.</p>
+          </aside>
+        </div>
+        <div class="encart reveal" id="encart" hidden></div>
+      </div>
+    </section>
+
+    <section class="section fiches-section" aria-labelledby="fiches-titre">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">De stukken</p>
+          <h2 id="fiches-titre">Hoe <em>bereiden</em></h2>
+        </div>
+        <div class="fiches" id="fiches"></div>
+      </div>
+    </section>
+
+    <section class="section autres-section">
+      <div class="container">
+        <div class="commander reveal">
+          <p class="eyebrow">Aan de telefoon</p>
+          <h2>Een vraag, een <em>bestelling</em>?</h2>
+          <p>Laat u door ons adviseren en eten wordt een waar genot!</p>
+          <a class="btn btn--primary" href="tel:+3283231156">Bel 083 23 11 56</a>
+        </div>
+        <h2 class="autres__titre reveal">Ander <em>vlees</em></h2>
+        <ul class="autres reveal" id="autres"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Slagerij · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Openingsuren</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Links</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Vlees</a></li>
+          <li><a href="la-maison.html">Over ons</a></li>
+          <li><a href="specialites.html">Specialiteiten</a></li>
+          <li><a href="commandes.html">Bestellingen</a></li>
+          <li><a href="contact.html">Contact en route</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Wettelijke vermeldingen</a> · <a href="confidentialite.html">Privacybeleid</a></p>
+      <p>Website gemaakt door Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="../data.js"></script>
+  <script src="data.js"></script>
+  <script src="../dessins.js"></script>
+  <script src="../script.js"></script>
+  <script src="../animal.js"></script>
+  <script src="../animal3d.js"></script>
+</body>
+</html>

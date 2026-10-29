@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poultry: the cuts | Boucherie des Frères Paul, Ciney</title>
+  <meta name="description" content="Poultry in Ciney: whole chicken, breasts, legs, drumsticks, wings, supremes. Every cut and how to cook it.">
+  <meta name="theme-color" content="#5e1621">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Poultry | Boucherie des Frères Paul">
+  <meta property="og:description" content="Poultry in Ciney: whole chicken, breasts, legs, drumsticks, wings, supremes. Every cut and how to cook it.">
+  <meta property="og:image" content="https://site-boucherie.vercel.app/images/animaux/volaille.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="alternate" hreflang="fr" href="https://site-boucherie.vercel.app/volaille.html">
+  <link rel="alternate" hreflang="nl" href="https://site-boucherie.vercel.app/nl/volaille.html">
+  <link rel="alternate" hreflang="en" href="https://site-boucherie.vercel.app/en/volaille.html">
+  <link rel="alternate" hreflang="x-default" href="https://site-boucherie.vercel.app/volaille.html">
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<!-- Gabarit commun aux pages animaux : seul data-animal (et le titre/description) change -->
+<body data-animal="volaille">
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="46" height="46">Frères Paul<span>Butcher · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html">Meat</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Pork</a></li>
+              <li><a href="boeuf.html">Beef</a></li>
+              <li><a href="veau.html">Veal</a></li>
+              <li><a href="agneau.html">Lamb</a></li>
+              <li><a href="volaille.html" aria-current="page">Poultry</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">About us</a></li>
+          <li><a href="specialites.html">Specialities</a></li>
+          <li><a href="commandes.html">Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="langues"><a href="../volaille.html" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="../nl/volaille.html" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><span aria-current="true" title="English">EN</span></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Call</a>
+      <button class="burger" id="burger" aria-label="Open the menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero hero--animal">
+      <img class="hero__img" id="animal-photo" alt="" width="1600" height="1067">
+      <div class="hero__content">
+        <p class="eyebrow">Our meat</p>
+        <h1>Our <em>poultry</em></h1>
+        <p class="hero__sub" id="animal-accroche"></p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#decoupe">See the cuts</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section decoupe" id="decoupe">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">The cuts</p>
+          <h2>The butcher's <em>chart</em></h2>
+          <p>Hover over a cut to see its name. Click to read its card.</p>
+        </div>
+        <div class="planche__dessin reveal" id="dessin"></div>
+        <!-- Volaille en 3D (animal3d.js) : remplace la planche une fois chargé ; si la 3D échoue, la planche reste -->
+        <div class="vue3d" id="vue3d" hidden>
+          <div class="vue3d__scene" id="vue3d-scene">
+            <button class="vue3d__ensemble" id="vue3d-ensemble" type="button" hidden>Full view</button>
+          </div>
+          <aside class="vue3d__fiche" id="vue3d-fiche" aria-live="polite">
+            <p class="eyebrow">The hen in 3D</p>
+            <p class="vue3d__aide">Turn the hen with your mouse or finger. Tap a gold dot or a cut to see its card.</p>
+          </aside>
+        </div>
+        <div class="encart reveal" id="encart" hidden></div>
+      </div>
+    </section>
+
+    <section class="section fiches-section" aria-labelledby="fiches-titre">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">The cuts</p>
+          <h2 id="fiches-titre">How to <em>cook</em> them</h2>
+        </div>
+        <div class="fiches" id="fiches"></div>
+      </div>
+    </section>
+
+    <section class="section autres-section">
+      <div class="container">
+        <div class="commander reveal">
+          <p class="eyebrow">On the phone</p>
+          <h2>A question, an <em>order</em>?</h2>
+          <p>Let us advise you and eating will become a real pleasure!</p>
+          <a class="btn btn--primary" href="tel:+3283231156">Call 083 23 11 56</a>
+        </div>
+        <h2 class="autres__titre reveal">Other <em>meats</em></h2>
+        <ul class="autres reveal" id="autres"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Butcher · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Opening hours</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Links</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Meat</a></li>
+          <li><a href="la-maison.html">About us</a></li>
+          <li><a href="specialites.html">Specialities</a></li>
+          <li><a href="commandes.html">Orders</a></li>
+          <li><a href="contact.html">Contact and directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Legal notice</a> · <a href="confidentialite.html">Privacy policy</a></p>
+      <p>“Hen” 3D model: Poly by Google, <a href="https://poly.pizza/m/8Unya0rw9tR">Poly Pizza</a>, licence <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></p>
+      <p>Website by Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="../data.js"></script>
+  <script src="data.js"></script>
+  <script src="../dessins.js"></script>
+  <script src="../script.js"></script>
+  <script src="../animal.js"></script>
+  <script src="../animal3d.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boucherie des Frères Paul | Butchers in Ciney, Rue du Commerce</title>
+  <meta name="description" content="Butcher's shop in Ciney, Rue du Commerce 11. Meat, homemade charcuterie, ready meals, meat boxes and buffets. 083 23 11 56. Free parking behind the shop.">
+  <meta name="theme-color" content="#5e1621">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Boucherie des Frères Paul, Ciney">
+  <meta property="og:description" content="Let us advise you and eating will become a real pleasure! Meat, homemade charcuterie and ready meals, Rue du Commerce in Ciney.">
+  <meta property="og:image" content="https://site-boucherie.vercel.app/images/og-image.jpg">
+
+  <!-- Données structurées -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ButcherShop",
+    "name": "Boucherie des Frères Paul",
+    "alternateName": "Chez Olivier et Sébastien",
+    "image": "https://site-boucherie.vercel.app/images/hero.jpg",
+    "telephone": "+32 83 23 11 56",
+    "openingHours": ["Mo-Sa 09:00-13:00", "Mo-Sa 14:00-18:00"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue du Commerce 11",
+      "postalCode": "5590",
+      "addressLocality": "Ciney",
+      "addressCountry": "BE"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../images/hero.jpg">
+  <link rel="alternate" hreflang="fr" href="https://site-boucherie.vercel.app/">
+  <link rel="alternate" hreflang="nl" href="https://site-boucherie.vercel.app/nl/">
+  <link rel="alternate" hreflang="en" href="https://site-boucherie.vercel.app/en/">
+  <link rel="alternate" hreflang="x-default" href="https://site-boucherie.vercel.app/">
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <!-- Intro à la première visite : un cercle doré se trace, le logo apparaît, puis le site (jamais si les animations sont réduites) -->
+  <div class="intro" id="intro" hidden>
+    <div class="intro__logo">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trait" cx="60" cy="60" r="58" stroke-width="1" pathLength="1" transform="rotate(-90 60 60)"/></svg>
+      <img src="../images/logo.png" alt="" width="248" height="248">
+    </div>
+    <button class="intro__passer" type="button">Skip</button>
+  </div>
+  <script>
+    // Inline : décidé avant le premier affichage, pour ne jamais montrer le site puis l'intro
+    (() => {
+      let dejaVue = true;
+      try { dejaVue = localStorage.getItem("intro-vue"); localStorage.setItem("intro-vue", "1"); } catch {}
+      if (dejaVue || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const intro = document.getElementById("intro");
+      intro.hidden = false;
+      const fermer = () => {
+        if (intro.classList.contains("is-fini")) return;
+        intro.classList.add("is-fini");
+        document.dispatchEvent(new Event("intro-fin"));
+        setTimeout(() => intro.remove(), 600);
+      };
+      intro.querySelector("button").addEventListener("click", fermer);
+      setTimeout(fermer, 1500);
+    })();
+  </script>
+
+  <!-- En-tête -->
+  <header class="header header--transparent" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="46" height="46">Frères Paul<span>Butcher · Ciney</span></a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li class="nav__sous">
+            <a href="viandes.html">Meat</a>
+            <ul class="sous-menu">
+              <li><a href="porc.html">Pork</a></li>
+              <li><a href="boeuf.html">Beef</a></li>
+              <li><a href="veau.html">Veal</a></li>
+              <li><a href="agneau.html">Lamb</a></li>
+              <li><a href="volaille.html">Poultry</a></li>
+            </ul>
+          </li>
+          <li><a href="la-maison.html">About us</a></li>
+          <li><a href="specialites.html">Specialities</a></li>
+          <li><a href="commandes.html">Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="langues"><a href="../index.html" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="../nl/index.html" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><span aria-current="true" title="English">EN</span></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--gold btn--small" href="tel:+3283231156">Call</a>
+      <button class="burger" id="burger" aria-label="Open the menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- Hero -->
+    <section class="hero" id="accueil">
+      <img class="hero__img" src="../images/hero.jpg" alt="" width="1920" height="1080">
+      <!-- Vidéo chargée par pages.js seulement si les conditions le permettent ; la photo reste dessous en secours -->
+      <video class="hero__img hero__video" data-src="../images/hero.mp4" poster="../images/hero.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+      <div class="hero__content">
+        <p class="conges" id="conges" role="status" hidden></p>
+        <h1>Boucherie des Frères <em>Paul</em></h1>
+        <p class="hero__sub">Three butcher brothers, Rue du Commerce in Ciney</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="viandes.html">See our meat</a>
+          <a class="btn btn--ghost" href="contact.html">Visit the shop</a>
+        </div>
+        <p class="hero__infos">Rue du Commerce 11, Ciney <span aria-hidden="true">·</span> Monday to Saturday</p>
+      </div>
+      <span class="hero__fil" aria-hidden="true"></span>
+    </section>
+
+    <!-- Raccourcis vers les pages -->
+    <section class="section raccourcis" aria-labelledby="raccourcis-titre">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">At the counter</p>
+          <h2 id="raccourcis-titre">What we do <em>here</em></h2>
+        </div>
+        <ul class="autres reveal">
+          <li><a class="autre" href="viandes.html"><img src="../images/accueil-viandes.jpg" alt="" width="900" height="600" loading="lazy"><span>Meat</span></a></li>
+          <li><a class="autre" href="la-maison.html"><img src="../images/accueil-maison.jpg" alt="" width="900" height="1350" loading="lazy"><span>About us</span></a></li>
+          <li><a class="autre" href="specialites.html"><img src="../images/accueil-specialites.jpg" alt="" width="900" height="600" loading="lazy"><span>Specialities</span></a></li>
+          <li><a class="autre" href="commandes.html"><img src="../images/accueil-commandes.jpg" alt="" width="900" height="1350" loading="lazy"><span>Orders</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Chiffres clés (compteurs animés par animations.js) -->
+    <section class="chiffres" aria-label="The shop in numbers">
+      <ul class="container chiffres__liste">
+        <li class="reveal"><strong><span data-compteur>20</span>+</strong> years in the trade</li>
+        <li class="reveal" style="transition-delay:.06s"><strong><span data-compteur>3</span></strong> brothers</li>
+        <li class="reveal" style="transition-delay:.12s"><strong><span data-compteur id="note-chiffre">4,7</span>★</strong> on Google</li>
+        <li class="reveal" style="transition-delay:.18s"><strong><span data-compteur>22</span></strong> free parking spaces</li>
+      </ul>
+    </section>
+
+    <!-- Plat du jour -->
+    <section class="section plat" id="plat-du-jour">
+      <div class="container">
+        <article class="plat__card reveal" id="plat"></article>
+      </div>
+    </section>
+
+    <!-- Bandeau défilant (décoratif : le texte est doublé pour boucler sans saut) -->
+    <div class="defilant" aria-hidden="true">
+      <p class="defilant__piste">
+        <span>Quality · Welcome · Freshness · Homemade · Quality · Welcome · Freshness · Homemade · </span><span>Quality · Welcome · Freshness · Homemade · Quality · Welcome · Freshness · Homemade · </span>
+      </p>
+    </div>
+
+    <!-- Produit phare de saison (masqué si produitPhare.afficher = false) -->
+    <section class="section phare" id="phare" hidden>
+      <div class="container phare__grid reveal" id="phare-contenu"></div>
+    </section>
+
+    <!-- Avis -->
+    <section class="avis" aria-label="Google reviews">
+      <div class="container avis__inner reveal" id="avis"></div>
+    </section>
+
+  </main>
+
+  <!-- Pied de page -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo"><img class="logo__sceau" src="../images/logo.png" alt="" width="72" height="72" loading="lazy">Frères Paul<span>Butcher · Ciney</span></p>
+        <p>Rue du Commerce 11, 5590 Ciney<br><a href="tel:+3283231156">083 23 11 56</a></p>
+      </div>
+      <div>
+        <p class="footer__titre">Opening hours</p>
+        <ul class="footer__liste" id="footer-horaires"></ul>
+      </div>
+      <div>
+        <p class="footer__titre">Links</p>
+        <ul class="footer__liste">
+          <li><a href="viandes.html">Meat</a></li>
+          <li><a href="la-maison.html">About us</a></li>
+          <li><a href="specialites.html">Specialities</a></li>
+          <li><a href="commandes.html">Orders</a></li>
+          <li><a href="contact.html">Contact and directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bas">
+      <p>© <span id="annee"></span> Boucherie des Frères Paul</p>
+      <p><a href="mentions-legales.html">Legal notice</a> · <a href="confidentialite.html">Privacy policy</a></p>
+      <p>Website by Propulse Web</p>
+    </div>
+  </footer>
+
+  <script src="../data.js"></script>
+  <script src="data.js"></script>
+  <script src="../script.js"></script>
+  <script src="../pages.js"></script>
+  <!-- Animations : chargées en différé, le site reste complet si elles ne chargent pas -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+  <script defer src="../animations.js"></script>
+</body>
+</html>

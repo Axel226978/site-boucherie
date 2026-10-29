@@ -7,6 +7,35 @@
 
 const $ = (sel) => document.querySelector(sel);
 
+/* ---------- Versions traduites (nl/, en/) ---------- */
+// La page charge ../data.js puis sa TRADUCTION (nl/data.js…) : on remplace les textes de SITE,
+// les listes d'objets étant reprises par id (ou par position), et les chemins images/ remontent d'un dossier
+const fusionner = (cible, trad) => {
+  for (const [k, v] of Object.entries(trad)) {
+    if (Array.isArray(v) && typeof v[0] === "object") v.forEach((x, i) => fusionner(x.id ? cible[k].find((c) => c.id === x.id) : cible[k][i], x));
+    else if (v && typeof v === "object" && !Array.isArray(v)) fusionner(cible[k], v);
+    else cible[k] = v;
+  }
+};
+const remonter = (o) => {
+  for (const k in o) {
+    if (typeof o[k] === "string" && o[k].startsWith("images/")) o[k] = "../" + o[k];
+    else if (o[k] && typeof o[k] === "object") remonter(o[k]);
+  }
+};
+{
+  const essai = { a: "x", l: [{ id: "p", n: "1", img: "images/a.jpg" }, { id: "q", n: "2" }], h: [{ j: "Lu" }] };
+  fusionner(essai, { a: "y", l: [{ id: "q", n: "deux" }], h: [{ j: "Ma" }] });
+  remonter(essai);
+  console.assert(essai.a === "y" && essai.l[0].n === "1" && essai.l[1].n === "deux" && essai.h[0].j === "Ma" && essai.l[0].img === "../images/a.jpg", "fusion des traductions");
+}
+if (typeof TRADUCTION !== "undefined") {
+  fusionner(SITE, TRADUCTION);
+  remonter(SITE);
+  if (typeof DESSINS !== "undefined") remonter(DESSINS);
+}
+const T = SITE.textes;
+
 // Échappe le texte injecté en HTML (utile le jour où data.js viendra d'une base de données)
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
@@ -22,7 +51,7 @@ majHeader();
 function toggleMenu(open) {
   header.classList.toggle("is-open", open);
   burger.setAttribute("aria-expanded", open);
-  burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  burger.setAttribute("aria-label", open ? T.menuFermer : T.menuOuvrir);
 }
 burger.addEventListener("click", () => toggleMenu(burger.getAttribute("aria-expanded") !== "true"));
 $("#nav").addEventListener("click", (e) => { if (e.target.closest("a")) toggleMenu(false); });
@@ -31,8 +60,8 @@ addEventListener("keydown", (e) => { if (e.key === "Escape") toggleMenu(false); 
 /* ---------- Horaires ---------- */
 const enMinutes = (hhmm) => { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; };
 const plagesTexte = (plages, separateur) => plages.length
-  ? plages.map(([a, b]) => `${a.replace(":", "h")} – ${b.replace(":", "h")}`).join(separateur)
-  : "Fermé";
+  ? plages.map(([a, b]) => `${a.replace(":", T.heure)} – ${b.replace(":", T.heure)}`).join(separateur)
+  : T.ferme;
 const estOuvert = (plages, minutes) => plages.some(([a, b]) => minutes >= enMinutes(a) && minutes < enMinutes(b));
 
 // Auto-vérification (visible dans la console en cas d'erreur)
@@ -54,7 +83,7 @@ SITE.horaires.forEach((h) => {
   else groupes.push({ debut: h.jour, fin: h.jour, texte });
 });
 $("#footer-horaires").innerHTML = groupes.map((g) =>
-  `<li>${esc(g.debut)}${g.fin !== g.debut ? " – " + esc(g.fin) : ""} : ${g.texte}</li>`).join("") + "<li>Fermé les jours fériés</li>";
+  `<li>${esc(g.debut)}${g.fin !== g.debut ? " – " + esc(g.fin) : ""}${T.deuxPoints}${g.texte}</li>`).join("") + `<li>${T.feries}</li>`;
 
 $("#annee").textContent = new Date().getFullYear();
 

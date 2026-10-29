@@ -41,9 +41,10 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && window.gsap && wi
 
   /* ---------- Compteurs des chiffres clés ---------- */
   document.querySelectorAll("[data-compteur]").forEach((el) => {
+    // « 4,7 » en français, « 4.7 » en anglais
     const fin = parseFloat(el.textContent.replace(",", "."));
-    const decimales = (el.textContent.split(",")[1] || "").length;
-    const format = (n) => n.toLocaleString("fr-BE", { minimumFractionDigits: decimales, maximumFractionDigits: decimales });
+    const decimales = (el.textContent.match(/[.,](\d+)/) || ["", ""])[1].length;
+    const format = (n) => n.toLocaleString(SITE.langue, { minimumFractionDigits: decimales, maximumFractionDigits: decimales });
     const compteur = { n: 0 };
     el.textContent = format(0);
     gsap.to(compteur, {

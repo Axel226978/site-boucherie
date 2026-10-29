@@ -4,6 +4,41 @@
    pourra être remplacé par une réponse d'API (même structure).
    ========================================================= */
 const SITE = {
+  langue: "fr-BE",
+
+  /* Petits textes affichés par les scripts (menu, horaires, fiches…) */
+  textes: {
+    heure: "h", // 09h00
+    deuxPoints: " : ",
+    menuOuvrir: "Ouvrir le menu",
+    menuFermer: "Fermer le menu",
+    ferme: "Fermé",
+    feries: "Fermé les jours fériés",
+    voirMorceaux: "Voir les morceaux",
+    voirMorceauxDe: (nom) => `${nom} : voir les morceaux`,
+    platDuJour: "Plat du jour",
+    portrait: (prenom) => `Portrait de ${prenom} Paul`,
+    commander: "Commander",
+    noteMoyenne: (n) => `Note moyenne sur ${n} avis Google`,
+    voirAvis: "Voir les avis sur Google",
+    ouvert: "Ouvert maintenant",
+    fermeConges: "Fermé pour congés",
+    fermeActuellement: "Fermé actuellement",
+    carte: "Carte : Boucherie des Frères Paul, Rue du Commerce 11, Ciney",
+    agrandirCarte: "Agrandir la carte",
+    planche: (nom) => `Planche de découpe : ${nom}`,
+    notreChoix: "Notre choix",
+    cuissons: "Cuissons conseillées",
+    recette: "Idée recette",
+    faitMaison: "Fait maison",
+    prix: "Prix : sur demande en magasin",
+    leMorceau: "Le morceau",
+    ficheComplete: "Voir la fiche complète",
+    alt3d: (nom) => `${nom} en 3D : touchez un point doré pour voir le morceau`,
+    chargement3d: "Chargement de la 3D",
+    voir: (nom) => `Voir : ${nom}`
+  },
+
   boutique: {
     nom: "Boucherie des Frères Paul",
     adresse: "Rue du Commerce 11",

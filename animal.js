@@ -22,7 +22,7 @@ const zones = Object.entries(dessin.zones).map(([id, d]) => `
 
 const [, , largeur, hauteur] = dessin.viewBox.split(" ");
 $("#dessin").innerHTML = `
-  <svg viewBox="${dessin.viewBox}" role="group" aria-label="Planche de découpe : ${esc(animal.nom)}">
+  <svg viewBox="${dessin.viewBox}" role="group" aria-label="${esc(T.planche(animal.nom))}">
     <defs><clipPath id="clip-corps"><path d="${dessin.silhouette}"/></clipPath></defs>
     <image href="${dessin.photo}" width="${largeur}" height="${hauteur}"/>
     <path class="voile" fill-rule="evenodd" d="M0,0 H${largeur} V${hauteur} H0 Z ${dessin.silhouette}"/>
@@ -55,7 +55,7 @@ document.querySelectorAll(".zone-lien").forEach((lien) => {
 if (animal.encart) {
   $("#encart").hidden = false;
   $("#encart").innerHTML = `
-    <p class="encart__label">Notre choix</p>
+    <p class="encart__label">${T.notreChoix}</p>
     <h3>${esc(animal.encart.titre)}</h3>
     <p>${esc(animal.encart.texte)}</p>
     <ul>${animal.encart.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>`;
@@ -69,10 +69,10 @@ $("#fiches").innerHTML = animal.morceaux.map((m) => `
     <div class="fiche__corps">
       <h3>${esc(m.nom)}</h3>
       <p>${esc(m.description)}</p>
-      <h4>Cuissons conseillées</h4>${puces(m.cuisson)}
-      <h4>Idée recette</h4><p>${esc(m.recette)}</p>
-      ${m.produits ? `<h4>Fait maison</h4>${puces(m.produits)}` : ""}
-      <p class="fiche__prix">Prix : sur demande en magasin</p>
+      <h4>${T.cuissons}</h4>${puces(m.cuisson)}
+      <h4>${T.recette}</h4><p>${esc(m.recette)}</p>
+      ${m.produits ? `<h4>${T.faitMaison}</h4>${puces(m.produits)}` : ""}
+      <p class="fiche__prix">${T.prix}</p>
     </div>
   </article>`).join("");
 

@@ -22,7 +22,7 @@ if (modele && vue) {
   const afficher = () => {
     const mv = document.createElement("model-viewer");
     Object.entries({
-      src: modele.src, alt: `${animal.nom} en 3D : touchez un point doré pour voir le morceau`,
+      src: modele.src, alt: T.alt3d(animal.nom),
       "camera-controls": "", "touch-action": "pan-y", "disable-pan": "", "interaction-prompt": "none",
       "camera-orbit": `${ANGLES_DEPART} auto`, "field-of-view": `${CHAMP}deg`,
       "min-field-of-view": `${CHAMP}deg`, "max-field-of-view": `${CHAMP}deg`,
@@ -32,10 +32,10 @@ if (modele && vue) {
     if (!reduit) mv.setAttribute("auto-rotate", "");
 
     mv.innerHTML = `
-      <div class="vue3d__chargement" slot="progress-bar"><span></span><p>Chargement de la 3D</p></div>
+      <div class="vue3d__chargement" slot="progress-bar"><span></span><p>${T.chargement3d}</p></div>
       ${Object.entries(modele.points).map(([id, [p, n]]) => `
         <button class="vue3d__point" slot="hotspot-${esc(id)}" type="button" data-id="${esc(id)}" data-visibility-attribute="visible"
-          data-position="${p.join(" ")}" data-normal="${n.join(" ")}" aria-label="Voir : ${esc(morceauParId[id].nom)}">
+          data-position="${p.join(" ")}" data-normal="${n.join(" ")}" aria-label="${esc(T.voir(morceauParId[id].nom))}">
           <span class="vue3d__nom" aria-hidden="true">${esc(morceauParId[id].nom)}</span>
         </button>`).join("")}`;
     scene.prepend(mv);
@@ -139,13 +139,13 @@ if (modele && vue) {
 
   const ouvrirFiche = (m) => {
     fiche.innerHTML = `
-      <p class="eyebrow">Le morceau</p>
+      <p class="eyebrow">${T.leMorceau}</p>
       <h3>${esc(m.nom)}</h3>
       <p>${esc(m.description)}</p>
-      <h4>Cuissons conseillées</h4>${puces(m.cuisson)}
-      <h4>Idée recette</h4><p>${esc(m.recette)}</p>
-      ${m.produits ? `<h4>Fait maison</h4>${puces(m.produits)}` : ""}
-      <a class="vue3d__lien" href="#morceau-${esc(m.id)}">Voir la fiche complète</a>`;
+      <h4>${T.cuissons}</h4>${puces(m.cuisson)}
+      <h4>${T.recette}</h4><p>${esc(m.recette)}</p>
+      ${m.produits ? `<h4>${T.faitMaison}</h4>${puces(m.produits)}` : ""}
+      <a class="vue3d__lien" href="#morceau-${esc(m.id)}">${T.ficheComplete}</a>`;
   };
 
   // Chargé seulement à l'approche de la planche : le reste de la page ne paie pas les ~250 Ko de model-viewer
